@@ -115,7 +115,6 @@ def get_data_gender_worksheet(worksheet):
     total_male = round(int((male_data / people) * 100))
     total_female = round(int((female_data / people) * 100))
     print(f"male: {total_male}%, female: {total_female}%")
-    
     return total_male, total_female 
 
 
@@ -154,6 +153,7 @@ def get_data_devices_worksheet(worksheet):
     print(F"computer: {total_computer}%, video console: {total_video_console}%, both devices: {total_both_devices}%")
     return total_computer, total_video_console, total_both_devices
 
+
 def get_data_game_plot(worksheet):
     """"
     Get data user's prefered kind of game from worksheet
@@ -163,8 +163,13 @@ def get_data_game_plot(worksheet):
     strategy = data_game_plot.count("strategy")
     shooting = data_game_plot.count("shooting")
     sports = data_game_plot.count("sports")
-    # print(f"strategy: {strategy}, shooting: {shooting}, sports: {sports}")
-    return strategy, shooting, sports
+    people = len(data_game_plot) - 1
+
+    total_strategy = round((strategy / people) * 100)
+    total_shooting = round((shooting / people) * 100)
+    total_sports = math.floor((sports / people) * 100)
+    print(f"strategy: {total_strategy}%, shooting: {total_shooting}%, sports: {total_sports}%\n")
+    return total_strategy, total_shooting, total_sports
 
 
 def main():
