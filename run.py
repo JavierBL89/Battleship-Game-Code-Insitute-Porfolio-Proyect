@@ -1,5 +1,6 @@
 import random
 import time
+import math
 import gspread
 from pprint import pprint
 from google.oauth2.service_account import Credentials
@@ -127,8 +128,14 @@ def get_data_disponibility_worksheet(worksheet):
     weekly = data_disponibility.count("weekly")
     twice_week = data_disponibility.count("twice a week")
     once_in_while = data_disponibility.count("once in a while")
-    # print(F"weekly: {weekly}, twice a week: {twice_week}, once in a while: {once_in_while}")
-    return weekly, twice_week, once_in_while
+    people = len(data_disponibility) - 1
+
+    total_weekly = round((weekly / people) * 100)
+    total_twice_a_week = round((twice_week / people) * 100)
+    total_once_in_while = math.floor((once_in_while / people) * 100 )
+    print(F"weekly: {total_weekly}%, twice a week: {total_twice_a_week}%, once in a while: {total_once_in_while}%")
+    return total_weekly, total_twice_a_week, total_once_in_while
+
 
 def get_data_devices_worksheet(worksheet):
     """"
