@@ -119,16 +119,16 @@ def get_data_gender_worksheet(worksheet):
     return total_male, total_female 
 
 
-def get_data_disponibility_worksheet(worksheet):
+def get_data_availability_worksheet(worksheet):
     """ 
-    Get data user's disponibility to play video games from worksheet
+    Get data user's availability to play video games from worksheet
     Calculate data percentages
     """
-    data_disponibility = worksheet.col_values(2)
-    weekly = data_disponibility.count("weekly")
-    twice_week = data_disponibility.count("twice a week")
-    once_in_while = data_disponibility.count("once in a while")
-    people = len(data_disponibility) - 1
+    data_availability = worksheet.col_values(2)
+    weekly = data_availability.count("weekly")
+    twice_week = data_availability.count("twice a week")
+    once_in_while = data_availability.count("once in a while")
+    people = len(data_availability) - 1
 
     total_weekly = round((weekly / people) * 100)
     total_twice_a_week = round((twice_week / people) * 100)
@@ -146,8 +146,13 @@ def get_data_devices_worksheet(worksheet):
     computer = data_devices.count("computer")
     video_console = data_devices.count("video console")
     both_devices = data_devices.count("both alike")
-    # print(F"computer: {computer}, video console: {video_console}, both devices: {both_devices}")
-    return computer, video_console, both_devices
+    people = len(data_devices) - 1
+
+    total_computer = round((computer / people) * 100)
+    total_video_console = round((video_console / people) * 100)
+    total_both_devices = math.floor((both_devices / people) * 100)
+    print(F"computer: {total_computer}%, video console: {total_video_console}%, both devices: {total_both_devices}%")
+    return total_computer, total_video_console, total_both_devices
 
 def get_data_game_plot(worksheet):
     """"
@@ -168,10 +173,10 @@ def main():
     # user_answers = get_answers_survey()
     # add_survey_data_worksheet(user_answers, "survey")
     data_gender = get_data_gender_worksheet(data_worksheet)
-    data_disponibility = get_data_disponibility_worksheet(data_worksheet)
+    data_availability = get_data_availability_worksheet(data_worksheet)
     data_devices = get_data_devices_worksheet(data_worksheet)
     data_game_plot = get_data_game_plot(data_worksheet)
-    # calculate_data = calculate_data_survey(data_gender, data_disponibility, data_devices, data_game_plot)
+    # calculate_data = calculate_data_survey(data_gender, data_availability, data_devices, data_game_plot)
 
 # start_survey()
 main()
