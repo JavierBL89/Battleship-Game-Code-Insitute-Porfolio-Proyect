@@ -123,6 +123,14 @@ def get_data_devices_worksheet(worksheet):
     print(F"computer: {computer}, video console: {video_console}, both devices: {both_devices}")
 
 
+def get_data_game_plot(worksheet):
+
+    data_game_plot = worksheet.col_values(4)
+    strategy = data_game_plot.count("strategy")
+    shooting = data_game_plot.count("shooting")
+    sports = data_game_plot.count("sports")
+    print(f"strategy: {strategy}, shooting: {shooting}, sports: {sports}")
+
 
 
 
@@ -134,7 +142,7 @@ def main():
     get_data_gender_worksheet(data_worksheet)
     get_data_disponibility_worksheet(data_worksheet)
     get_data_devices_worksheet(data_worksheet)
-
+    get_data_game_plot(data_worksheet)
 
 # start_survey()
 main()
