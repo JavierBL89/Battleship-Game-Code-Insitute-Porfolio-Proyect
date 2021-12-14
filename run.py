@@ -102,17 +102,27 @@ def get_data_gender_worksheet(worksheet):
     male_gender = data_gender.count("male")
     female_gender = data_gender.count("female")
     # people = len(gender) - 1
-
     print(f"male: {male_gender}, female: {female_gender}")
 
 
+def get_data_disponibility_worksheet(worksheet):
+
+    data_disponibility = worksheet.col_values(2)
+    weekly = data_disponibility.count("weekly")
+    twice_week = data_disponibility.count("twice a week")
+    once_in_while = data_disponibility.count("once in a while")
+    print(F"weekly: {weekly}, twice a week: {twice_week}, once in a while: {once_in_while}")
+
+    
 def main():
 
     data_worksheet = SHEET.worksheet("survey")
     # user_answers = get_answers_survey()
     # add_survey_data_worksheet(user_answers, "survey")
     get_data_gender_worksheet(data_worksheet)
-    
+    get_data_disponibility_worksheet(data_worksheet)
+
+
 
 # start_survey()
 main()
