@@ -1,6 +1,7 @@
 import random
 import time
 import gspread
+from pprint import pprint
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -95,14 +96,26 @@ def add_survey_data_worksheet(user_answers, worksheet):
     new_data = data_worksheet.append_row(user_answers)
 
 
+def get_data_gender_worksheet(worksheet):
+
+    data_gender = worksheet.col_values(1)
+    male_gender = data_gender.count("male")
+    female_gender = data_gender.count("female")
+    # people = len(gender) - 1
+
+    print(f"male: {male_gender}, female: {female_gender}")
+
+
 def main():
 
-    user_answers = get_answers_survey()
-    add_survey_data_worksheet(user_answers, "survey")
+    data_worksheet = SHEET.worksheet("survey")
+    # user_answers = get_answers_survey()
+    # add_survey_data_worksheet(user_answers, "survey")
+    get_data_gender_worksheet(data_worksheet)
+    
 
-
-start_survey()
-
+# start_survey()
+main()
 # class Question
 #     def __init__(self, question, a ,b , c):
 #         self.question = question
