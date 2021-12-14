@@ -48,28 +48,22 @@ def get_answers_survey():
          
     while True:
         for question in questions:
-            # print(f"{question[0]}")
-            # answer_1 = input().lower()
-            # if not validate_data(answer_1):
-            #     break
-            # print(f"{question[1]}\n every week | twice a month | once in a while")
-            # answer_2 = input().lower()
-            # if not validate_data(answer_2):
-            #     break
-            # print(f"{question[2]}\n computer | video console | both alike")
-            # answer_3 = input().lower()
-            # if not validate_data(answer_3):
-            #     break   
-            print(f"{question[3]}\n strategy | shooting | sports")
+            print(f"{question[0]}\nmale  \ female")
+            answer_1 = input().lower()
+            if not validate_data(answer_1):
+                break
+            print(f"{question[1]}\nweekly  \ twice a month  \ once in a while")
+            answer_2 = input().lower()
+            if not validate_data(answer_2):
+                break
+            print(f"{question[2]}\ncomputer  \ video console  \ both alike")
+            answer_3 = input().lower()
+            if not validate_data(answer_3):
+                break   
+            print(f"{question[3]}\ntrategy  \ shooting  \ sports")
             answer_4 = input().lower()
-            # if not validate_data(answer_4):
-                # print("data valid!")
-                # time.sleep(1)                
-                # print("LET THE BATTLE BEGIN")
-                # break
-            # add_survey_data_worksheet(survey_data, current_user_answer)
             if validate_data(answer_4):
-                print("data valid!")
+                print("Perfect, that's it!\n")
                 time.sleep(1)                
                 print("LET THE BATTLE BEGIN")
                 return user_answers
@@ -78,14 +72,9 @@ def get_answers_survey():
                 break
 
         
-
-            
-                
-            
-            
-
 def validate_data(answer):
-    choises = ["y", "n", "male", "female", "every week", "twice a month", " once in a while", "computer", "video console", "both alike", "strategy", "shooting", "sports"]
+
+    choises = ["male", "female", "weekly", "twice a month", " once in a while", "computer", "video console", "both alike", "strategy", "shooting", "sports"]
     try:
         if answer not in choises:
             user_answers.clear()
@@ -100,10 +89,17 @@ def validate_data(answer):
     return True
 
 
+def add_survey_data_worksheet(user_answers, worksheet):
+    
+    data_worksheet = SHEET.worksheet(worksheet)
+    new_data = data_worksheet.append_row(user_answers)
+
+
 def main():
 
     user_answers = get_answers_survey()
-    print(user_answers)
+    add_survey_data_worksheet(user_answers, "survey")
+
 
 start_survey()
 
