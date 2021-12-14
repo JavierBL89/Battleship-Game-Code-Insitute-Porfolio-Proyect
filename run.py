@@ -113,7 +113,19 @@ def get_data_disponibility_worksheet(worksheet):
     once_in_while = data_disponibility.count("once in a while")
     print(F"weekly: {weekly}, twice a week: {twice_week}, once in a while: {once_in_while}")
 
-    
+
+def get_data_devices_worksheet(worksheet):
+
+    data_devices = worksheet.col_values(3)
+    computer = data_devices.count("computer")
+    video_console = data_devices.count("video console")
+    both_devices = data_devices.count("both alike")
+    print(F"computer: {computer}, video console: {video_console}, both devices: {both_devices}")
+
+
+
+
+
 def main():
 
     data_worksheet = SHEET.worksheet("survey")
@@ -121,7 +133,7 @@ def main():
     # add_survey_data_worksheet(user_answers, "survey")
     get_data_gender_worksheet(data_worksheet)
     get_data_disponibility_worksheet(data_worksheet)
-
+    get_data_devices_worksheet(data_worksheet)
 
 
 # start_survey()
