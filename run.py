@@ -20,10 +20,18 @@ class Board:
             print(landpoint, board)
 
 
+    def column_cordenates():
+        translate_cordenates = {
+            "a" : 0, "b": 1, "c": 2, "d": 3, "f": 4, "g": 5, "h": 6, "i": 7
+            }
+        return translate_cordenates
+
+
 def main():
     
     board = Board(8, 8, "Javier", "user")
     board.print()
+    # Board.column_cordenates()
 
 print("  A B C D F G H I")
 main()
