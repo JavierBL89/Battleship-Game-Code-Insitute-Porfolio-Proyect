@@ -32,9 +32,14 @@ class Board:
 
     
     def random_ship(self, size):
-        x = random.randint(0, size)
-        y = random.randint(0, size)
-        return x, y
+        total_ships = 0
+        while total_ships <= 5:
+            x = random.randint(0, size)
+            y = random.randint(0, size)
+            self.ships.append((x, y))
+            total_ships += 1
+        return self.ships
+    
 
 
 def main():
