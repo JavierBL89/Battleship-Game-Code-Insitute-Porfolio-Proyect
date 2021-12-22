@@ -7,22 +7,15 @@ class Board:
     """
     Define game's board
     """
-    def __init__(self, size, num_ships, name, type):
+    def __init__(self, size, board, name, type):
         self.size = size
-        self.board = [["-" for i in range(size)] for row in range(size)]
-        self.num_ships = num_ships
         self.name = name
         self.type = type
+        self.board = [["-" for i in range(size)] for row in range(size)]
         self.guesses = []
         self.ships = []
-        
-
-    def print(self):
-        for row in self.board:
-            board = " ".join(row)
-        for landpoint in range(1, 9):
-            print(landpoint, board)
-
+        self.user_shots= []
+               
 
     def column_cordenates():
         translate_cordenates = {
@@ -57,16 +50,40 @@ class Board:
         return guess_row, guess_column
     
 
+    def check_guess(self, player_guess):
+        self.user_shots.append(player_guess)
+        self.row = player_guess[0]
+        self.column = player_guess[1]
+        # print(player_guess[0],player_guess[1])
+        self.board[self.row][self.column] = "X"
+        # for landpoint in range(1, 9):
+        return self.board
+
+
+    def populate_board(self):
+        for row in self.board:
+            board = " ".join(row)
+            print(board)
+
 
 def main():
     size = 8
-    board = Board(size, size, "Javier", "user")
-    game_board = board.print()
-    random_ship = board.random_ship(size)
-    print(random_ship)
+    computer_board = Board(size, size, "Titanico", "user")
+    player_board = Board(size, size, "Javier", "user")
+
+    random_ship = computer_board.random_ship(size)
+    # print(random_ship)
     # user_guess = input("Take your shot\n")
-    print(board.user_guess())
-print("  A B C D F G H I")
+    player_guess = computer_board.user_guess()
+    radar = computer_board.check_guess(player_guess)
+    print("  A B C D F G H I")
+    # game_board = computer_board.print(radar)
+    computer_board.populate_board()
+    
+
+    
+
+
 main()
 
 
