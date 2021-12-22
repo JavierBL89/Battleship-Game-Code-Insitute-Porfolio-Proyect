@@ -39,6 +39,22 @@ class Board:
             self.ships.append((x, y))
             total_ships += 1
         return self.ships
+
+    def user_guess(self):
+        try:
+            guess_row = int(input("Row: "))
+            while guess_row > randint(1,9):
+                print("Please enter  valid data, only whole numbers from 1 to 9 are valid!\n")
+                guess_row = int(input("Row: "))
+
+            guess_column = int(input("Column: "))
+            while guess_column > randint(1,9):
+                print("Please enter  valid data, only whole numbers from 1 to 9 are valid!\n")
+                guess_column = int(input("Column: "))
+            
+        except ValueError:
+            print("No a valid input")
+        return guess_row, guess_column
     
 
 
@@ -48,6 +64,8 @@ def main():
     game_board = board.print()
     random_ship = board.random_ship(size)
     print(random_ship)
+    # user_guess = input("Take your shot\n")
+    print(board.user_guess())
 print("  A B C D F G H I")
 main()
 
