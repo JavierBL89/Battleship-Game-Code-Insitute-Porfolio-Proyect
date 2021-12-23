@@ -99,6 +99,17 @@ class Board:
         # print(self.player_ships)
         # print(self.computer_ships)
 
+    def validate_shot(self, shot, shooter):
+        if shooter == "player" and shot in self.computer_ships:
+            print("\nYou shunk my boat motherfucker!")
+            print("My turn now...\n")
+        elif shooter == "player" and shot not in self.computer_ships:
+            print("You missed!")
+        elif shooter == "computer" and shot in self.player_ships:
+            print("Got you!")
+        elif shooter == "computer" and shot not in self.player_ships:
+            print("\nMissed!...")
+
 
     def play_game(computer, player, size):
         game_over = True
@@ -113,12 +124,12 @@ class Board:
             print("  Computer Radar")
             print("A B C D F G H I")
             computer.populate_board()
-            # player.validate_shot(player_guess, "player")
+            player.validate_shot(player_guess, "player")
             time.sleep(2)
             print(" My Battleship")
             print("A B C D F G H I")
             player.populate_board()
-            # computer.validate_shot(computer_guess, "computer")
+            computer.validate_shot(computer_guess, "computer")
 
             # Board.validate_shot(radar)
             
