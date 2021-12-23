@@ -15,7 +15,7 @@ class Board:
         self.board = [["-" for i in range(1, size)] for row in range(1, size)]
         self.guesses = []
         self.ships = []
-        self.user_shots = []
+        self.player_shots = []
         self.computer_shots = []
         self.player_ships = []
         self.computer_ships = [(7, 5), (6, 5), (0, 3), (2, 0), (7, 
@@ -57,7 +57,7 @@ class Board:
             print("No a valid input")
         return guess_row, guess_column
 
-   
+    
     def computer_guess(self):
         self.x = random.randint(0,7)
         self.y = random.randint(0,7)
@@ -73,23 +73,22 @@ class Board:
         elif compu_guess in computer_shots:
             computer_guess()
         
-    # def validate_guess(self):
-
-
-    def check_guess(self, player_guess):
-        if player_guess not in self.user_shots:
-            self.user_shots.append(player_guess)
-            self.row = player_guess[0]
-            self.column = player_guess[1]
-            if player_guess not in self.computer_ships:
+ 
+    def check_guess(self, player_shot):
+        if player_shot not in self.player_shots:
+            self.player_shots.append(player_shot)
+            self.row = player_shot[0]
+            self.column = player_shot[1]
+            if player_shot not in self.computer_ships:
                 self.board[self.row][self.column] = "X"
-            elif player_guess in self.computer_ships:
+            elif player_shot in self.computer_ships:
                 self.board[self.row][self.column]= "O"
-            print(player_guess)
+            print(player_shot)
             return self.board
-        elif player_guess in user_shots:
-            print(f"Coodenates {player_guess} already used")
-            player_guess()
+        elif player_shot in self.player_shots:
+            print(f"Coordenates {player_shot} already been used")
+            print("Shot again!")
+            self.player_guess()
         
 
     def populate_board(self):
@@ -117,21 +116,19 @@ class Board:
             # random_computer_ship = computer.random_ship(size, "computer")
             random_player_ship = player.random_ship(size, "player")
             
-            player_guess = player.player_guess()
+            player_shot = player.player_guess()
             computer_guess = player.computer_guess()
 
-            computer.check_guess(player_guess)
+            computer.check_guess(player_shot)
             print("  Computer Radar")
             print("A B C D F G H I")
             computer.populate_board()
-            player.validate_shot(player_guess, "player")
+            player.validate_shot(player_shot, "player")
             time.sleep(2)
             print(" My Battleship")
             print("A B C D F G H I")
             player.populate_board()
             computer.validate_shot(computer_guess, "computer")
-
-            # Board.validate_shot(radar)
             
 
 
