@@ -11,10 +11,11 @@ class Board:
         self.size = size
         self.name = name
         self.type = type
-        self.board = [["-" for i in range(size)] for row in range(size)]
+        self.board = [["-" for i in range(1, size)] for row in range(1, size)]
         self.guesses = []
         self.ships = []
-        self.user_shots= []
+        self.user_shots = []
+        self.computer_shots = []
                
 
     def column_cordenates():
@@ -27,8 +28,8 @@ class Board:
     def random_ship(self, size):
         total_ships = 0
         while total_ships <= 5:
-            x = random.randint(0, size)
-            y = random.randint(0, size)
+            x = random.randint(1, size)
+            y = random.randint(1, size)
             self.ships.append((x, y))
             total_ships += 1
         return self.ships
@@ -48,37 +49,57 @@ class Board:
         except ValueError:
             print("No a valid input")
         return guess_row, guess_column
-    
+
+   
+    def computer_guess(self):
+        x = random.randint(1,9)
+        y = random.randint(1,9)
+        compu_guess = x, y 
+        if compu_guess not in self.computer_shots:
+            self.computer_shots.append(compu_guess)
+        elif compu_guess in computer_shots:
+            computer_guess()
+        print(x, y)
+
 
     def check_guess(self, player_guess):
-        self.user_shots.append(player_guess)
-        self.row = player_guess[0]
-        self.column = player_guess[1]
-        # print(player_guess[0],player_guess[1])
-        self.board[self.row][self.column] = "X"
-        # for landpoint in range(1, 9):
-        return self.board
-
+        if player_guess not in self.user_shots:
+            self.user_shots.append(player_guess)
+            self.row = player_guess[0]
+            self.column = player_guess[1]
+            self.board[self.row][self.column] = "X"
+            return self.board
+        elif player_guess in user_shots:
+            print(f"Coodenates {player_guess} already used")
+            user_guess()
+        
 
     def populate_board(self):
+        
         for row in self.board:
             board = " ".join(row)
             print(board)
 
 
 def main():
-    size = 8
-    computer_board = Board(size, size, "Titanico", "user")
-    player_board = Board(size, size, "Javier", "user")
+    size = 9
+    computer = Board(size, size, "Titanico", "user")
+    player = Board(size, size, "Javier", "user")
 
-    random_ship = computer_board.random_ship(size)
-    # print(random_ship)
-    # user_guess = input("Take your shot\n")
-    player_guess = computer_board.user_guess()
-    radar = computer_board.check_guess(player_guess)
+    random_computer_ship = computer.random_ship(size)
+    random_player_ship = player.random_ship(size)
+    
+    print(random_player_ship)
+    print(random_computer_ship)
+
+    computer_guess = computer.computer_guess()
+    player_guess = player.user_guess()
+
+    radar = computer.check_guess(player_guess)
     print("  A B C D F G H I")
-    # game_board = computer_board.print(radar)
-    computer_board.populate_board()
+    computer.populate_board()
+    print(" My Battleship")
+    player.populate_board()
     
 
     
