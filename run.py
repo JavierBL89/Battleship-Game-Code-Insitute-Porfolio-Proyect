@@ -1,4 +1,5 @@
 import random
+import time
 from random import randint
 from pprint import pprint
 
@@ -16,6 +17,9 @@ class Board:
         self.ships = []
         self.user_shots = []
         self.computer_shots = []
+        self.player_ships = []
+        self.computer_ships = [(7, 5), (6, 5), (0, 3), (2, 0), (7, 
+2)]
                
 
     def column_cordenates():
@@ -25,24 +29,27 @@ class Board:
         return translate_cordenates
 
     
-    def random_ship(self, size):
-        total_ships = 0
+    def random_ship(self, size, type):
+        total_ships = 1
         while total_ships <= 5:
-            x = random.randint(1, size)
-            y = random.randint(1, size)
-            self.ships.append((x, y))
+            x = random.randint(0, size) - 1
+            y = random.randint(0, size)- 1
+            if type == "computer":
+                self.computer_ships.append((x, y))
+            elif type == "player":
+                self.player_ships.append((x, y))
             total_ships += 1
         return self.ships
 
     def user_guess(self):
         try:
             guess_row = int(input("Row: "))
-            while guess_row > randint(1,9):
+            while guess_row not in [0,1,2,3,4,5,6,7]:
                 print("Please enter  valid data, only whole numbers from 1 to 9 are valid!\n")
                 guess_row = int(input("Row: "))
 
             guess_column = int(input("Column: "))
-            while guess_column > randint(1,9):
+            while guess_column not in [0,1,2,3,4,5,6,7]:
                 print("Please enter  valid data, only whole numbers from 1 to 9 are valid!\n")
                 guess_column = int(input("Column: "))
             
@@ -52,14 +59,21 @@ class Board:
 
    
     def computer_guess(self):
-        x = random.randint(1,9)
-        y = random.randint(1,9)
-        compu_guess = x, y 
+        self.x = random.randint(0,7)
+        self.y = random.randint(0,7)
+        compu_guess = self.x, self.y 
+        print(compu_guess)
         if compu_guess not in self.computer_shots:
             self.computer_shots.append(compu_guess)
+            if compu_guess in self.player_ships:
+                self.board[self.x][self.y] = "O"
+            elif compu_guess not in self.player_ships:
+                self.board[self.x][self.y] = "X"
+            return self.board
         elif compu_guess in computer_shots:
             computer_guess()
-        print(x, y)
+        
+    # def validate_guess(self):
 
 
     def check_guess(self, player_guess):
@@ -67,7 +81,12 @@ class Board:
             self.user_shots.append(player_guess)
             self.row = player_guess[0]
             self.column = player_guess[1]
-            self.board[self.row][self.column] = "X"
+            if player_guess not in self.computer_ships:
+                self.board[self.row][self.column] = "X"
+                
+            elif player_guess in self.computer_ships:
+                self.board[self.row][self.column]= "O"
+            print(player_guess)
             return self.board
         elif player_guess in user_shots:
             print(f"Coodenates {player_guess} already used")
@@ -75,30 +94,33 @@ class Board:
         
 
     def populate_board(self):
-        
+        # x = self.computer_shot(0)
+        # y = self.computer_shot(1)
+        # print(computer_guess)
         for row in self.board:
             board = " ".join(row)
+            # board[x][y] = "X"
             print(board)
+        # print(self.player_ships)
+        # print(self.computer_ships)
 
 
 def main():
     size = 9
-    computer = Board(size, size, "Titanico", "user")
+    computer = Board(size, size, "Titanico", "computer")
     player = Board(size, size, "Javier", "user")
 
-    random_computer_ship = computer.random_ship(size)
-    random_player_ship = player.random_ship(size)
+    # random_computer_ship = computer.random_ship(size, "computer")
+    random_player_ship = player.random_ship(size, "player")
     
-    print(random_player_ship)
-    print(random_computer_ship)
-
-    computer_guess = computer.computer_guess()
     player_guess = player.user_guess()
-
+    computer_shot = player.computer_guess()
     radar = computer.check_guess(player_guess)
-    print("  A B C D F G H I")
+    print("  Computer Radar")
+    print("A B C D F G H I")
     computer.populate_board()
     print(" My Battleship")
+    print("A B C D F G H I")
     player.populate_board()
     
 
