@@ -32,6 +32,9 @@ class Board:
 
     
     def random_ship(self, size, type):
+        """
+        Create 5 random ships for each player
+        """
         total_ships = 1
         while total_ships <= 5:
             x = random.randint(0, size) - 1
@@ -44,6 +47,10 @@ class Board:
         return self.ships
 
     def player_guess(self):
+        """
+        Takes user input and validates data
+        Raise and erro if data in not valid
+        """
         try:
             guess_row = int(input("\nRow: "))
             while guess_row not in [0,1,2,3,4,5,6,7]:
@@ -61,6 +68,10 @@ class Board:
 
     
     def computer_guess(self):
+        """
+        Creates computer random shots
+        Updates the players battleship accordingly
+        """
         self.x = random.randint(0,7)
         self.y = random.randint(0,7)
         compu_guess = self.x, self.y 
@@ -77,6 +88,10 @@ class Board:
         
  
     def check_guess(self, player_shot):
+        """
+        Check user's shot against computer battleship
+        Updates computer's battleship accordingly
+        """"
         if player_shot not in self.player_shots:
             self.player_shots.append(player_shot)
             self.row = player_shot[0]
@@ -93,11 +108,18 @@ class Board:
         
 
     def populate_board(self):
+        """
+        Populates neatly the battleship passed in
+        """
         for row in self.board:
             board = " ".join(row)
             print(board)
 
     def validate_shot(self, shot, shooter):
+        """
+        Validates whather the shot is hit or missed
+        Response accordigly to the user
+        """
         game_over = ""
         if shooter == "player" and shot in self.computer_ships:
             game_over = "player"
@@ -120,6 +142,9 @@ class Board:
          
 
     def play_game(computer, player, size):
+        """
+        Start up game and run till the end of it
+        """
         game = True
         while game:
             # random_computer_ship = computer.random_ship(size, "computer")
