@@ -6,7 +6,9 @@ from pprint import pprint
 
 class Board:
     """
-    Define game's board
+    Define game's players objects, game battleships,
+    and define lists of ships and shots used
+    during the game.
     """
     def __init__(self, size, board, name, type):
         self.size = size
@@ -83,7 +85,6 @@ class Board:
                 self.board[self.row][self.column] = "X"
             elif player_shot in self.computer_ships:
                 self.board[self.row][self.column]= "O"
-            print(player_shot)
             return self.board
         elif player_shot in self.player_shots:
             print(f"Coordenates {player_shot} already been used")
@@ -95,24 +96,32 @@ class Board:
         for row in self.board:
             board = " ".join(row)
             print(board)
-        # print(self.player_ships)
-        # print(self.computer_ships)
 
     def validate_shot(self, shot, shooter):
+        game_over = ""
         if shooter == "player" and shot in self.computer_ships:
+            game_over = "player"
             print("\nYou shunk my boat motherfucker!")
             print("My turn now...\n")
         elif shooter == "player" and shot not in self.computer_ships:
             print("You missed!")
         elif shooter == "computer" and shot in self.player_ships:
+            game_over = "computer"
             print("Got you!")
         elif shooter == "computer" and shot not in self.player_ships:
             print("\nMissed!...")
+        return game_over
 
+
+    def game_over(self):
+        if puta == "player" and len(self.computer_ships) == 0:
+            print("GAME OVER")
+            return False
+         
 
     def play_game(computer, player, size):
-        game_over = True
-        while game_over:
+        game = True
+        while game:
             # random_computer_ship = computer.random_ship(size, "computer")
             random_player_ship = player.random_ship(size, "player")
             
@@ -129,8 +138,8 @@ class Board:
             print("A B C D F G H I")
             player.populate_board()
             computer.validate_shot(computer_guess, "computer")
-            
-
+            # game = Board.game_over(puta)
+          
 
 
 def main():
@@ -138,7 +147,7 @@ def main():
     computer = Board(size, size, "Titanico", "computer")
     player = Board(size, size, "Javier", "user")
     Board.play_game(computer, player, size)
-    
+
 
 main()
 
