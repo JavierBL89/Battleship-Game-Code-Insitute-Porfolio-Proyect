@@ -20,7 +20,7 @@ class Board:
         self.ships = []
         self.player_shots = []
         self.computer_shots = []
-        self.player_ships = []
+        self.player_ships = [(7, 5)]
         self.computer_ships = [(7, 5), (6, 5), (0, 3), (2, 0), (7, 
 2)]
                
@@ -140,10 +140,8 @@ class Board:
         if shooter == "player" and shot in self.computer_ships:
             count += 1
             print("\nYou shunk my boat motherfucker!")
-            print("My turn now...\n")
         elif shooter == "player" and shot not in self.computer_ships:
             print("\nYou missed!")
-            print("\nMy turn now...\n")
         elif shooter == "computer" and shot in self.player_ships:
             count += 1
             print("Got you!")
@@ -154,7 +152,7 @@ class Board:
 
 
     def game_over(count):
-        if count == 5:
+        if count == 1:
             return False
         
         
@@ -177,10 +175,11 @@ class Board:
             count = player.validate_shot(player_shot, "player")
             game = Board.game_over(count)
             if game is False:
-                print("""Well well well little bitch!!
-                 you win this time...
-                I'll come back stronger and fuck your pretty ass""")
+                print("""Well well well little bitch!!\n
+You win this time...\n
+I'll come back stronger and fuck your pretty ass!!\n""")
                 break
+            print(f"\nMy shot is... {computer_guess}")
             time.sleep(2)
             print("\n   My Battleship")
             print("  A B C D F G H I")
