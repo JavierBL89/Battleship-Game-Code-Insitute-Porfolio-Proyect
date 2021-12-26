@@ -15,11 +15,12 @@ class Board:
         self.name = name
         self.type = type
         self.board = [["-" for i in range(1, size)] for row in range(1, size)]
+        # self.count = 0
         self.guesses = []
         self.ships = []
         self.player_shots = []
         self.computer_shots = []
-        self.player_ships = []
+        self.player_ships = [(6, 5)]
         self.computer_ships = [(7, 5), (6, 5), (0, 3), (2, 0), (7, 
 2)]
                
@@ -74,32 +75,31 @@ class Board:
         """
         self.x = random.randint(0,7)
         self.y = random.randint(0,7)
-        compu_guess = self.x, self.y 
-        print(compu_guess)
+        compu_guess = self.x, self.y
         if compu_guess not in self.computer_shots:
             self.computer_shots.append(compu_guess)
             if compu_guess in self.player_ships:
                 self.board[self.x][self.y] = "O"
             elif compu_guess not in self.player_ships:
                 self.board[self.x][self.y] = "X"
-            return self.board
-        elif compu_guess in computer_shots:
-            computer_guess()
+            return compu_guess
+        elif compu_guess in self.computer_shots:
+            self.computer_guess()
         
  
     def check_guess(self, player_shot):
         """
         Check user's shot against computer battleship
         Updates computer's battleship accordingly
-        """"
+        """
         if player_shot not in self.player_shots:
-            self.player_shots.append(player_shot)
             self.row = player_shot[0]
             self.column = player_shot[1]
+            self.player_shots.append(player_shot)
             if player_shot not in self.computer_ships:
                 self.board[self.row][self.column] = "X"
             elif player_shot in self.computer_ships:
-                self.board[self.row][self.column]= "O"
+                self.board[self.row][self.column] = "O"
             return self.board
         elif player_shot in self.player_shots:
             print(f"Coordenates {player_shot} already been used")
@@ -114,41 +114,41 @@ class Board:
         for row in self.board:
             board = " ".join(row)
             print(board)
+        
 
     def validate_shot(self, shot, shooter):
         """
-        Validates whather the shot is hit or missed
+        Validates whether the shot is hit or missed
         Response accordigly to the user
         """
-        game_over = ""
+        count = 0
         if shooter == "player" and shot in self.computer_ships:
-            game_over = "player"
+            count += 1
             print("\nYou shunk my boat motherfucker!")
             print("My turn now...\n")
         elif shooter == "player" and shot not in self.computer_ships:
             print("You missed!")
         elif shooter == "computer" and shot in self.player_ships:
-            game_over = "computer"
+            count += 1
+            print("\nComputer says...")
             print("Got you!")
         elif shooter == "computer" and shot not in self.player_ships:
             print("\nMissed!...")
-        return game_over
+        return count
 
-
-    def game_over(self):
-        if puta == "player" and len(self.computer_ships) == 0:
-            print("GAME OVER")
+    def game_over(count):
+        if count == 1:
             return False
-         
-
+        
+        
     def play_game(computer, player, size):
         """
         Start up game and run till the end of it
         """
         game = True
         while game:
-            # random_computer_ship = computer.random_ship(size, "computer")
-            random_player_ship = player.random_ship(size, "player")
+            # computer.random_ship(size, "computer")
+            # player.random_ship(size, "player")
             
             player_shot = player.player_guess()
             computer_guess = player.computer_guess()
@@ -157,13 +157,24 @@ class Board:
             print("  Computer Radar")
             print("A B C D F G H I")
             computer.populate_board()
-            player.validate_shot(player_shot, "player")
+            count = player.validate_shot(player_shot, "player")
+            game = Board.game_over(count)
+            if game is False:
+                print("""Well well well little bitch!!
+                 you win this time...
+                I'll come back stronger and fuck your pretty ass""")
+                break
             time.sleep(2)
             print(" My Battleship")
             print("A B C D F G H I")
             player.populate_board()
-            computer.validate_shot(computer_guess, "computer")
-            # game = Board.game_over(puta)
+            count = computer.validate_shot(computer_guess, "computer")
+            game = Board.game_over(count)
+            if game is False:
+                print("I knew i could beat you!\n")
+                print("Pricks like you must be erased of this unfilthy planet...\n")
+                break
+            
           
 
 
