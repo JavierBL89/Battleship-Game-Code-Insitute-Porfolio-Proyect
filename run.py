@@ -20,7 +20,7 @@ class Board:
         self.ships = []
         self.player_shots = []
         self.computer_shots = []
-        self.player_ships = [(6, 5)]
+        self.player_ships = [(6, 5), (4, 1), (3, 6)]
         self.computer_ships = [(7, 5), (6, 5), (0, 3), (2, 0), (7, 
 2)]
                
@@ -107,13 +107,24 @@ class Board:
             self.player_guess()
         
 
-    def populate_board(self):
+    def populate_board(self, player):
         """
         Populates neatly the battleship passed in
         """
-        for row in self.board:
-            board = " ".join(row)
-            print(board)
+        print(self.player_ships)
+        if player == "player":
+            for boat in self.player_ships:
+                self.x = boat[0]
+                self.y = boat[1]
+                print((self.x, self.y))
+                self.board[self.x][self.y] = "B"
+            for row in self.board:
+                board = " ".join(row)
+                print(board)
+        else:
+            for row in self.board:
+                board = " ".join(row)
+                print(board)
         
 
     def validate_shot(self, shot, shooter):
@@ -136,8 +147,10 @@ class Board:
             print("\nMissed!...")
         return count
 
+    # def player_battleship(self, player)
+
     def game_over(count):
-        if count == 1:
+        if count == 5:
             return False
         
         
@@ -156,7 +169,7 @@ class Board:
             computer.check_guess(player_shot)
             print("  Computer Radar")
             print("A B C D F G H I")
-            computer.populate_board()
+            computer.populate_board("computer")
             count = player.validate_shot(player_shot, "player")
             game = Board.game_over(count)
             if game is False:
@@ -167,7 +180,7 @@ class Board:
             time.sleep(2)
             print(" My Battleship")
             print("A B C D F G H I")
-            player.populate_board()
+            player.populate_board("player")
             count = computer.validate_shot(computer_guess, "computer")
             game = Board.game_over(count)
             if game is False:
