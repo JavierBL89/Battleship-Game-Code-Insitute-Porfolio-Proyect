@@ -20,7 +20,7 @@ class Board:
         self.ships = []
         self.player_shots = []
         self.computer_shots = []
-        self.player_ships = [(6, 5), (4, 1), (3, 6)]
+        self.player_ships = []
         self.computer_ships = [(7, 5), (6, 5), (0, 3), (2, 0), (7, 
 2)]
                
@@ -143,12 +143,13 @@ class Board:
             print("My turn now...\n")
         elif shooter == "player" and shot not in self.computer_ships:
             print("\nYou missed!")
+            print("\nMy turn now...\n")
         elif shooter == "computer" and shot in self.player_ships:
             count += 1
-            print("\nComputer says...")
             print("Got you!")
         elif shooter == "computer" and shot not in self.player_ships:
-            print("\nMissed!...")
+            print("\nMissed!...\n")
+
         return count
 
 
@@ -171,7 +172,7 @@ class Board:
 
             computer.check_guess(player_shot)
             print("\n  Computer Radar")
-            print("A B C D F G H I")
+            print("  A B C D F G H I")
             computer.populate_board("computer")
             count = player.validate_shot(player_shot, "player")
             game = Board.game_over(count)
@@ -181,8 +182,8 @@ class Board:
                 I'll come back stronger and fuck your pretty ass""")
                 break
             time.sleep(2)
-            print("\n My Battleship")
-            print("A B C D F G H I")
+            print("\n   My Battleship")
+            print("  A B C D F G H I")
             player.populate_board("player")
             count = computer.validate_shot(computer_guess, "computer")
             game = Board.game_over(count)
@@ -190,6 +191,8 @@ class Board:
                 print("I knew i could beat you!\n")
                 print("Pricks like you must be erased of this unfilthy planet...\n")
                 break
+            else:
+                game = True
                      
 
 def main():
