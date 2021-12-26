@@ -53,6 +53,7 @@ class Board:
         Raise and erro if data in not valid
         """
         try:
+            print("\nYou shot!")
             guess_row = int(input("\nRow: "))
             while guess_row not in [0,1,2,3,4,5,6,7]:
                 print("Please enter  valid data, only whole numbers from 1 to 9 are valid!\n")
@@ -65,6 +66,7 @@ class Board:
             
         except ValueError:
             print("No a valid input")
+            self.player_guess()
         return guess_row, guess_column
 
     
@@ -111,12 +113,10 @@ class Board:
         """
         Populates neatly the battleship passed in
         """
-        print(self.player_ships)
         if player == "player":
             for boat in self.player_ships:
                 self.x = boat[0]
                 self.y = boat[1]
-                print((self.x, self.y))
                 self.board[self.x][self.y] = "B"
             for row in self.board:
                 board = " ".join(row)
@@ -124,8 +124,7 @@ class Board:
         else:
             for row in self.board:
                 board = " ".join(row)
-                print(board)
-        
+            
 
     def validate_shot(self, shot, shooter):
         """
@@ -138,7 +137,7 @@ class Board:
             print("\nYou shunk my boat motherfucker!")
             print("My turn now...\n")
         elif shooter == "player" and shot not in self.computer_ships:
-            print("You missed!")
+            print("\nYou missed!")
         elif shooter == "computer" and shot in self.player_ships:
             count += 1
             print("\nComputer says...")
@@ -147,7 +146,6 @@ class Board:
             print("\nMissed!...")
         return count
 
-    # def player_battleship(self, player)
 
     def game_over(count):
         if count == 5:
@@ -167,7 +165,7 @@ class Board:
             computer_guess = player.computer_guess()
 
             computer.check_guess(player_shot)
-            print("  Computer Radar")
+            print("\n  Computer Radar")
             print("A B C D F G H I")
             computer.populate_board("computer")
             count = player.validate_shot(player_shot, "player")
@@ -178,7 +176,7 @@ class Board:
                 I'll come back stronger and fuck your pretty ass""")
                 break
             time.sleep(2)
-            print(" My Battleship")
+            print("\n My Battleship")
             print("A B C D F G H I")
             player.populate_board("player")
             count = computer.validate_shot(computer_guess, "computer")
@@ -187,9 +185,7 @@ class Board:
                 print("I knew i could beat you!\n")
                 print("Pricks like you must be erased of this unfilthy planet...\n")
                 break
-            
-          
-
+                     
 
 def main():
     size = 9
