@@ -113,17 +113,22 @@ class Board:
         """
         Populates neatly the battleship passed in
         """
+        row_number = 0
         if player == "player":
             for boat in self.player_ships:
                 self.x = boat[0]
                 self.y = boat[1]
                 self.board[self.x][self.y] = "B"
             for row in self.board:
+                row_number += 1
                 board = " ".join(row)
-                print(board)
+                print(row_number, board)
         else:
             for row in self.board:
                 board = " ".join(row)
+                row_number += 1
+                board = " ".join(row)
+                print(row_number, board)
             
 
     def validate_shot(self, shot, shooter):
