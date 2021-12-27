@@ -15,7 +15,6 @@ class Board:
         self.name = name
         self.type = type
         self.board = [["-" for i in range(1, size)] for row in range(1, size)]
-        # self.count = 0
         self.guesses = []
         self.ships = []
         self.player_shots = []
@@ -111,9 +110,6 @@ class Board:
         """
         Populates neatly the battleship passed in
         """
-        # self.guess_x = self.computer_shots[0]
-        # self.guess_y = self.computer_shots[0]
-
         row_number = 0
         if player == "player": 
             for boat in self.player_ships:
@@ -122,16 +118,7 @@ class Board:
                 self.board[self.x][self.y] = "S"
                 if shot in self.player_ships:
                     self.board[shot[0]][shot[1]] = "$"
-            # print(self.guess_x)
-
-            # for shot in self.computer_shots:
-            #     self.x = shot[0]
-            #     self.y = shot[1]
-            #     self.board[self.x][self.y] = "$"
-            # 
             for row in self.board:
-                # while self.computer_shots in self.player_ships:
-                #     row[self.guess_x][self.guess_y] = "$"
                 board = " ".join(row)
                 row_number += 1
                 print(row_number, board)
@@ -203,8 +190,8 @@ I'll come back stronger and fuck your pretty ass!!\n""")
                 break
             else:
                 game = True
-        
-                     
+
+
 def main():
     size = 9
     computer = Board(size, size, "Titanico", "computer")
