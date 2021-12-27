@@ -53,15 +53,15 @@ class Board:
         """
         try:
             print("\nYou shot!")
-            guess_row = int(input("\nRow: "))
+            guess_row = int(input("\nRow: ")) - 1
             while guess_row not in [0,1,2,3,4,5,6,7]:
-                print("Please enter  valid data, only whole numbers from 1 to 9 are valid!\n")
-                guess_row = int(input("Row: "))
+                print("Please enter  valid data, only whole numbers from 1 to 8 are valid!\n")
+                guess_row = int(input("Row: ")) - 1
 
-            guess_column = int(input("Column: "))
+            guess_column = int(input("Column: ")) - 1
             while guess_column not in [0,1,2,3,4,5,6,7]:
-                print("Please enter  valid data, only whole numbers from 1 to 9 are valid!\n")
-                guess_column = int(input("Column: "))
+                print("Please enter  valid data, only whole numbers from 1 to 8 are valid!\n")
+                guess_column = int(input("Column: ")) - 1
             
         except ValueError:
             print("No a valid input")
@@ -74,10 +74,10 @@ class Board:
         Creates computer random shots
         Updates the players battleship accordingly
         """
-        # self.x = random.randint(0,7)
-        # self.y = random.randint(0,7)
-        self.x = 7
-        self.y = 5
+        self.x = random.randint(0,7)
+        self.y = random.randint(0,7)
+        # self.x = 7
+        # self.y = 5
         compu_guess = self.x, self.y
         if compu_guess not in self.computer_shots:
             self.computer_shots.append(compu_guess)
@@ -171,7 +171,7 @@ def play_game(computer, player, size):
         print("  A B C D F G H I")
         computer.populate_board("computer", player_shot)
         count = computer.validate_shot(player_shot, "player")
-        game = Board.game_over(count)
+        game_over(count)
         if game is False:
             print("""Well well well little bitch!!\n
 You win this time...\n
@@ -183,7 +183,7 @@ I'll come back stronger and fuck your pretty ass!!\n""")
         print("  A B C D F G H I")
         player.populate_board("player", computer_shot)
         count = player.validate_shot(computer_shot, "computer")
-        game = Board.game_over(count)
+        game_over(count)
         if game is False:
             print("I knew i could beat you!\n")
             print("Pricks like you must be erased of this unfilthy planet...\n")
@@ -196,7 +196,7 @@ def main():
     size = 9
     computer = Board(size, size, "Titanico", "computer")
     player = Board(size, size, "Javier", "user")
-    Board.play_game(computer, player, size)
+    play_game(computer, player, size)
 
 
 main()
