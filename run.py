@@ -150,46 +150,46 @@ class Board:
         return count
 
 
-    def game_over(count):
-        if count == 1:
-            return False
+def game_over(count):
+    if count == 1:
+        return False
+    
+    
+def play_game(computer, player, size):
+    """
+    Start up game and run till the end of it
+    """
+    game = True
+    while game:
+        # computer.random_ship(size, "computer")
+        # player.random_ship(size, "player")
         
-        
-    def play_game(computer, player, size):
-        """
-        Start up game and run till the end of it
-        """
-        game = True
-        while game:
-            # computer.random_ship(size, "computer")
-            # player.random_ship(size, "player")
-            
-            player_shot = player.player_guess()
-            computer_shot = computer.computer_guess()
-            computer.check_guess(player_shot)
-            print("\n  Computer Radar")
-            print("  A B C D F G H I")
-            computer.populate_board("computer", player_shot)
-            count = computer.validate_shot(player_shot, "player")
-            game = Board.game_over(count)
-            if game is False:
-                print("""Well well well little bitch!!\n
+        player_shot = player.player_guess()
+        computer_shot = computer.computer_guess()
+        computer.check_guess(player_shot)
+        print("\n  Computer Radar")
+        print("  A B C D F G H I")
+        computer.populate_board("computer", player_shot)
+        count = computer.validate_shot(player_shot, "player")
+        game = Board.game_over(count)
+        if game is False:
+            print("""Well well well little bitch!!\n
 You win this time...\n
 I'll come back stronger and fuck your pretty ass!!\n""")
-                break
-            print(f"\nMy shot is... {computer_shot}")
-            time.sleep(2)
-            print("\n   My Battleship")
-            print("  A B C D F G H I")
-            player.populate_board("player", computer_shot)
-            count = player.validate_shot(computer_shot, "computer")
-            game = Board.game_over(count)
-            if game is False:
-                print("I knew i could beat you!\n")
-                print("Pricks like you must be erased of this unfilthy planet...\n")
-                break
-            else:
-                game = True
+            break
+        print(f"\nMy shot is... {computer_shot}")
+        time.sleep(2)
+        print("\n   My Battleship")
+        print("  A B C D F G H I")
+        player.populate_board("player", computer_shot)
+        count = player.validate_shot(computer_shot, "computer")
+        game = Board.game_over(count)
+        if game is False:
+            print("I knew i could beat you!\n")
+            print("Pricks like you must be erased of this unfilthy planet...\n")
+            break
+        else:
+            game = True
 
 
 def main():
