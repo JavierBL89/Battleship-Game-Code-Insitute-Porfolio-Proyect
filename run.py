@@ -21,13 +21,6 @@ class Board:
         self.computer_shots = []
         self.player_ships = [(7, 5), (4, 5), (0, 3)]
         self.computer_ships = [(7, 5), (6, 5), (0, 3), (2, 0), (7, 2)]
-               
-
-    def column_cordenates():
-        translate_cordenates = {
-            "a": 0, "b": 1, "c": 2, "d": 3, "f": 4, "g": 5, "h": 6, "i": 7
-            }
-        return translate_cordenates
 
 
     def random_ship(self, size, type):
@@ -117,6 +110,10 @@ class Board:
                 self.board[self.x][self.y] = "S"
                 if shot in self.player_ships:
                     self.board[shot[0]][shot[1]] = "$"
+            # for guess in self.computer_shots:
+            #     self.a = guess[0]
+            #     self.b = guess[1]
+            #     self.board[self.a][self.b] = "X"
             for row in self.board:
                 board = " ".join(row)
                 row_number += 1
@@ -142,7 +139,7 @@ class Board:
             print("\nYou missed!")
         elif shooter == "computer" and shot in self.player_ships:
             count += 1
-            print("Got you!")
+            print("\nGot you!")
         elif shooter == "computer" and shot not in self.player_ships:
             print("\nMissed!...\n")
         return count
