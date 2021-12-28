@@ -93,7 +93,10 @@ class Board:
                 self.board[self.row][self.column] = "$"
             return self.board
         elif player_shot in self.player_shots:
-            print(f"Coordenates {player_shot} already been used")
+            row, col = player_shot
+            row += 1
+            col += 1
+            print(f"Coordenates {row, col} already been used")
             print("Shot again!")
             self.player_guess()
         
