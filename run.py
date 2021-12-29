@@ -43,6 +43,8 @@ class Board:
         Takes user input and validates data
         Raise and erro if data in not valid
         """
+        guess_column = ""
+        guess_row = ""
         try:
             print("\nYou shot!")
             guess_row = int(input("\nRow: "))
@@ -169,9 +171,9 @@ I'll come back stronger and fuck your pretty ass!!\n""")
         return count
     
 
-def game_over(count):
-    if count == 1:
-        return False
+    def game_over(count):
+        if count == 1:
+            return False
     
 
 def play_game(computer, player, size):
