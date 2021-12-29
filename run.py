@@ -2,7 +2,6 @@ import random
 import time
 import random
 from intro import intro_game
-from typing import Sized
 
 
 class Board:
@@ -11,10 +10,9 @@ class Board:
     and define lists of ships and shots used
     during the game.
     """
-    def __init__(self, size, board, name, type):
+    def __init__(self, size, name):
         self.size = size
         self.name = name
-        self.type = type
         self.board = [["-" for i in range(1, size)] for row in range(1, size)]
         self.guesses = []
         self.ships = []
@@ -24,7 +22,7 @@ class Board:
         self.computer_ships = [(7, 5), (6, 5), (0, 3), (2, 0), (7, 2)]
 
 
-    def random_ship(self, size, type):
+    def random_ship(self, size, name):
         """
         Create 5 random ships for each player
         """
@@ -32,9 +30,9 @@ class Board:
         while total_ships <= 5:
             x = random.randint(1, size) 
             y = random.randint(1, size) 
-            if type == "computer":
+            if name == "computer":
                 self.computer_ships.append((x, y))
-            elif type == "player":
+            elif name == "player":
                 self.player_ships.append((x, y))
             total_ships += 1
         return self.ships
@@ -121,10 +119,6 @@ class Board:
         """
         row_number = 0
         if player == "player": 
-            # for boat in self.player_ships:
-            #     self.x = boat[0]
-            #     self.y = boat[1]
-            #     self.board[self.x][self.y] = "S"
             for row in self.board:
                 board = " ".join(row)
                 row_number += 1
@@ -176,15 +170,14 @@ I'll come back stronger and fuck your pretty ass!!\n""")
         if count == 1:
             return False
     
-
-def play_game(computer, player, size):
+    
+def play_game(computer, player):
     """
     Start up game and run till the end of it
     """
-    intro_game()
+    # intro_game()
     game = True
     while game:
-
         # computer.random_ship(size, "computer")
         # player.random_ship(size, "player")
         
@@ -203,7 +196,6 @@ def play_game(computer, player, size):
         player.populate_board("player", computer_shot)
         game = Board.game_over(count)
         if game is False:
-            
             break
         time.sleep(1)
         computer.check_guess(player_shot)
@@ -218,12 +210,11 @@ def play_game(computer, player, size):
         else:
             game = True
 
-
 def main():
     size = 9
-    computer = Board(size, size, "Titanico", "computer")
-    player = Board(size, size, "Javier", "user")
-    play_game(computer, player, size)
+    computer = Board(size, "Titanico")
+    player = Board(size, "Javier")
+    play_game(computer, player)
 
 
 main()
