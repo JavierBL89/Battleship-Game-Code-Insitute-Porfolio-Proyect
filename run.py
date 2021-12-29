@@ -147,8 +147,6 @@ You win this time...\n
 I'll come back stronger and fuck your pretty ass!!\n""")
             else:
                 print("\nYou shunk my boat motherfucker!")                
-            print("\nYou shunk my boat motherfucker!")
-                print("\nYou shunk my boat motherfucker!")                
         elif shooter == "player" and shot not in self.computer_ships:
             print("\nYou missed!")
         elif shooter == "computer" and shot in self.player_ships:
@@ -172,7 +170,8 @@ I'll come back stronger and fuck your pretty ass!!\n""")
     
 
 def game_over(count):
-        if count == 1:        return False
+    if count == 1:
+        return False
     
 
 def play_game(computer, player, size):
