@@ -54,7 +54,6 @@ class Board:
             while guess_column not in [ 1, 2, 3, 4, 5, 6, 7, 8]:
                 print("Please enter  valid data, only whole numbers from 1 to 8 are valid!\n")
                 guess_column = int(input("Column: ")) 
-        
         except ValueError:
             print("No a valid input")
             self.player_guess()
@@ -142,22 +141,38 @@ class Board:
         count = 0
         if shooter == "player" and shot in self.computer_ships:
             count += 1
+            if count == 2:
+                print("""\nWell well well little bitch!!\n
+You win this time...\n
+I'll come back stronger and fuck your pretty ass!!\n""")
+            else:
+                print("\nYou shunk my boat motherfucker!")                
             print("\nYou shunk my boat motherfucker!")
+                print("\nYou shunk my boat motherfucker!")                
         elif shooter == "player" and shot not in self.computer_ships:
             print("\nYou missed!")
         elif shooter == "computer" and shot in self.player_ships:
             count += 1
-            print("\nah aaah!!")
-            time.sleep(1)
-            print("\nGot you!")
+            if count == 1:
+                print("\n..oohhh what a great feeling...")
+                time.sleep(1)
+                print("\n...watch me enjoying the victory's smoke..")
+                time.sleep(1)
+                print("\n...I'll be waiting for you to come back...right here!")
+                time.sleep(1)
+                print("\nThis man is full of him self!")
+                restart = input("\nYou wanna try and give him hell? y/n\n")
+            else:
+                print("\nah aaah!!")
+                time.sleep(1)
+                print("\nGot you!")
         elif shooter == "computer" and shot not in self.player_ships:
             print("\nMissed!...\n")
         return count
     
 
 def game_over(count):
-    if count == 1:
-        return False
+        if count == 1:        return False
     
 
 def play_game(computer, player, size):
@@ -233,18 +248,16 @@ def play_game(computer, player, size):
         # print(f"     {player_name}")
         print("  1 2 3 4 5 6 7 8")
         player.populate_board("player", computer_shot)
-        game_over(count)
+        game = Board.game_over(count)
         if game is False:
-            print("""Well well well little bitch!!\n
-You win this time...\n
-I'll come back stronger and fuck your pretty ass!!\n""")
+            
             break
         time.sleep(1)
         computer.check_guess(player_shot)
         print("\n      Radar    ")
         print("  1 2 3 4 5 6 7 8")
         computer.populate_board("computer", player_shot)
-        game_over(count)
+        game = Board.game_over(count)
         if game is False:
             print("I knew i could beat you!\n")
             print("Pricks like you must be erased of this unfilthy planet...\n")
