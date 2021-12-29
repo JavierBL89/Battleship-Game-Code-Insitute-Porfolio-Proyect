@@ -1,6 +1,7 @@
 import random
 import time
 import random
+from intro import intro_game
 from typing import Sized
 
 
@@ -180,56 +181,7 @@ def play_game(computer, player, size):
     """
     Start up game and run till the end of it
     """
-    # print("\nOhh! Long time waiting for this!")
-    # time.sleep(1)
-    # print("\nBefore get started, let me ask you...\n")
-    # time.sleep(1)
-    # shirt = input("\nWhat color is your ugly shirt\n?")
-    # time.sleep(1)
-    # print("\nahgg!! Really ugly")
-    # time.sleep(1)
-    # food = input("\n...and what did you last have for food?\n")
-    # player_name = shirt + food
-    # player_name = player_name.capitalize()
-    # print("\nI always like to know my adversary's name")
-    # time.sleep(1)
-    # print(f"\nI will put you to the ground {player_name}!")
-    # time.sleep(2)
-    # print("\nCheck this out for now...")
-    # time.sleep(2)
-    # print("\n----------------------------")
-    # print("          Players           ")
-    # print(f" Computer         {player_name}\n")
-    # print("       Number of ships      ")
-    # print("    5                  5\n  ")
-    # print("           Score            ")
-    # print("    0                  0    ")
-    # print("----------------------------")
-    # time.sleep(4)
-    # print("\n   +++++++++++++++++++")
-    # print("          LEYEND        ")
-    # print("    S = boats           ")
-    # print("    X = water           ")
-    # print("    $ = hit/shunk       ")
-    # print("   ++++++++++++++++++++")
-    # time.sleep(3)
-    # print("\n...your game board")
-    # time.sleep(1)
-    # print(f"\n     {player_name}")
-    # print("  A B C D F G H I")
-    # player.populate_board("player", size)
-    # time.sleep(4)
-    # print(f"\n...Today's your lucky day {player_name}")
-    # time.sleep(1)
-    # print("\n....I will lend you a radar...")
-    # time.sleep(2)
-    # print("\n     Radar")
-    # print("  A B C D F G H I")
-    # computer.populate_board("computer", Sized)
-    # print("\n...and i will let you shot first!")
-    # time.sleep(1)
-    # print(f"\n...I will see you in abism {player_name}!")
-    # time.sleep(2)
+    intro_game()
     game = True
     while game:
 
