@@ -1,7 +1,7 @@
 import time
 
 
-def intro_game():
+def intro_game(size, computer, player):
     print("\nOhh! Long time waiting for this!")
     time.sleep(1)
     print("\nBefore get started, let me ask you...\n")
@@ -47,8 +47,9 @@ def intro_game():
     time.sleep(2)
     print("\n     Radar")
     print("  A B C D F G H I")
-    computer.populate_board("computer", Sized)
+    computer.populate_board("computer", size)
     print("\n...and i will let you shot first!")
     time.sleep(1)
     print(f"\n...I will see you in abism {player_name}!")
     time.sleep(2)
+    return player_name

@@ -2,7 +2,7 @@ import random
 import time
 import random
 from intro import intro_game
-
+player_name = ""
 
 class Board:
     """
@@ -10,9 +10,8 @@ class Board:
     and define lists of ships and shots used
     during the game.
     """
-    def __init__(self, size, name):
+    def __init__(self, size):
         self.size = size
-        self.name = name
         self.board = [["-" for i in range(1, size)] for row in range(1, size)]
         self.player_shots = []
         self.computer_shots = []
@@ -157,6 +156,8 @@ I'll come back stronger and fuck your pretty ass!!\n""")
                 time.sleep(1)
                 print("\nThis man is full of him self!")
                 restart = input("\nYou wanna try and give him hell? y/n\n")
+                if restart.lower() == "y":
+                    restart_game()
             else:
                 print("\nah aaah!!")
                 time.sleep(1)
@@ -170,17 +171,31 @@ I'll come back stronger and fuck your pretty ass!!\n""")
         if count == 1:
             return False
     
-    
-def play_game(computer, player):
+def restart_game():
+    global player_name
+    time.sleep(1)
+    print(f"\n...glad to see back {player_name}")
+    time.sleep(1)
+    print("\n...thought you'd run away like a rat!")
+    time.sleep(1)
+    print("\nhere a hint...")
+    print("\n...some boats might be next to one another...")
+    time.sleep(1)
+    print("\nI will let you shot first!")
+    print("\n...consider it as a profesional courtesy...")
+    time.sleep(1)
+    remain()
+
+
+def play_game(computer, player, player_game):
     """
     Start up game and run till the end of it
     """
-    # intro_game()
     game = True
     while game:
         # computer.random_ship(size, "computer")
         # player.random_ship(size, "player")
-        
+
         player_shot = player.player_guess()
         computer_shot = computer.computer_guess()
         time.sleep(1)
@@ -210,12 +225,15 @@ def play_game(computer, player):
         else:
             game = True
 
+        
 
 def main():
     size = 9
-    computer = Board(size, "Titanico")
-    player = Board(size, "Javier")
-    play_game(computer, player)
+    computer = Board(size)
+    player = Board(size)
+    global player_name
+    player_name = intro_game(size, computer, player)   
+    play_game(computer, player, player_name)
 
 
 main()
