@@ -14,8 +14,6 @@ class Board:
         self.size = size
         self.name = name
         self.board = [["-" for i in range(1, size)] for row in range(1, size)]
-        self.guesses = []
-        self.ships = []
         self.player_shots = []
         self.computer_shots = []
         self.player_ships = [(7, 5), (4, 5), (0, 3)]
@@ -99,6 +97,7 @@ class Board:
             print("Shot again!")
             self.player_guess()
             
+
     def check_guess_2(self, computer_shot):
         for boat in self.player_ships:
             self.x = boat[0]
@@ -129,6 +128,7 @@ class Board:
                 row_number += 1
                 board = " ".join(row)
                 print(row_number, board)
+
 
     def validate_shot(self, shot, shooter):
         """
@@ -209,6 +209,7 @@ def play_game(computer, player):
             break
         else:
             game = True
+
 
 def main():
     size = 9
