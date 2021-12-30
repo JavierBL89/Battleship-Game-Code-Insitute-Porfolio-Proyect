@@ -5,6 +5,7 @@ import sys
 from intro import intro_game
 player_name = ""
 
+
 class Board:
     """
     Define game's players objects, game battleships,
@@ -19,15 +20,14 @@ class Board:
         self.player_ships = [(7, 5), (4, 5), (0, 3)]
         self.computer_ships = [(7, 5), (6, 5), (0, 3), (2, 0), (7, 2)]
 
-
     def random_ship(self, size, name):
         """
         Create 5 random ships for each player
         """
         total_ships = 1
         while total_ships <= 5:
-            x = random.randint(1, size) 
-            y = random.randint(1, size) 
+            x = random.randint(1, size)
+            y = random.randint(1, size)
             if name == "computer":
                 self.computer_ships.append((x, y))
             elif name == "player":
@@ -45,20 +45,21 @@ class Board:
         try:
             print("\nYou shot!")
             guess_row = int(input("\nRow: "))
-            while guess_row not in [ 1, 2, 3, 4, 5, 6, 7, 8]:
-                print("Please enter  valid data, only whole numbers from 1 to 8 are valid!\n")
+            while guess_row not in [1, 2, 3, 4, 5, 6, 7, 8]:
+                print("Please enter  valid data, "
+                      "only whole numbers from 1 to 8 are valid!\n")
                 guess_row = int(input("Row: "))
 
             guess_column = int(input("Column: "))
-            while guess_column not in [ 1, 2, 3, 4, 5, 6, 7, 8]:
-                print("Please enter  valid data, only whole numbers from 1 to 8 are valid!\n")
-                guess_column = int(input("Column: ")) 
+            while guess_column not in [1, 2, 3, 4, 5, 6, 7, 8]:
+                print("Please enter  valid data, "
+                      "only whole numbers from 1 to 8 are valid!\n")
+                guess_column = int(input("Column: "))
         except ValueError:
             print("No a valid input")
             self.player_guess()
         return guess_row, guess_column
 
-    
     def computer_guess(self):
         """
         Creates computer random shots
@@ -73,8 +74,7 @@ class Board:
             return compu_guess
         elif compu_guess in self.computer_shots:
             self.computer_guess()
-        
- 
+
     def check_guess(self, player_shot):
         """
         Check user's shot against computer battleship
@@ -94,7 +94,6 @@ class Board:
             print(f"\nCoordenates {row, col} already been used")
             print("Shot again!")
             self.player_guess()
-            
 
     def check_guess_2(self, computer_shot):
         for boat in self.player_ships:
@@ -109,13 +108,12 @@ class Board:
             self.board[self.row][self.column] = "$"
         return self.board
 
-
     def populate_board(self, player, shot):
         """
         Populates neatly the battleship passed in
         """
         row_number = 0
-        if player == "player": 
+        if player == "player":
             for row in self.board:
                 board = " ".join(row)
                 row_number += 1
@@ -126,7 +124,6 @@ class Board:
                 row_number += 1
                 board = " ".join(row)
                 print(row_number, board)
-
 
     def validate_shot(self, shot, shooter):
         """
@@ -141,7 +138,7 @@ class Board:
 You win this time...\n
 I'll come back stronger and fuck your pretty ass!!\n""")
             else:
-                print("\nYou shunk my boat motherfucker!")                
+                print("\nYou shunk my boat motherfucker!")
         elif shooter == "player" and shot not in self.computer_ships:
             print("\nYou missed!")
         elif shooter == "computer" and shot in self.player_ships:
@@ -151,14 +148,16 @@ I'll come back stronger and fuck your pretty ass!!\n""")
                 time.sleep(1)
                 print("\n...watch me enjoying the victory's smoke..")
                 time.sleep(1)
-                print("\n...I'll be waiting for you to come back...right here!")
+                print("\n...I'll be waiting for you "
+                      "to come back...right here!")
                 time.sleep(1)
                 print("\nThis man is full of him self!")
                 restart = input("\nYou wanna try and give him hell? y/n\n")
                 while not restart.lower() == "y" or restart.lower == "n":
                     print("\nYou must enter a valid answer 'y/n'")
                     time.sleep(1)
-                    restart = input("\nYou wanna try again and give him hell? 'y/n'\n")
+                    restart = input("\nYou wanna try again "
+                                    "and give him hell? 'y/n'\n")
                 if restart.lower == "y":
                     restart()
                 elif restart.lower() == "n":
@@ -170,12 +169,12 @@ I'll come back stronger and fuck your pretty ass!!\n""")
         elif shooter == "computer" and shot not in self.player_ships:
             print("\nMissed!...\n")
         return count
-    
 
     def game_over(count):
         if count == 1:
             return False
-    
+
+
 def restart_game():
     global player_name
     time.sleep(1)
@@ -225,19 +224,19 @@ def play_game(computer, player, player_game):
         game = Board.game_over(count)
         if game is False:
             print("I knew i could beat you!\n")
-            print("Pricks like you must be erased of this unfilthy planet...\n")
+            print("Pricks like you must be erased "
+                  "of this unfilthy planet...\n")
             break
         else:
             game = True
 
-        
 
 def main():
     size = 8
     computer = Board(size)
     player = Board(size)
     global player_name
-    # player_name = intro_game(size, computer)   
+    # player_name = intro_game(size, computer)
     play_game(computer, player, player_name)
 
 

@@ -29,7 +29,7 @@ def intro_game(size, computer):
             food = input("\n...and what did you last have for food?\n")
         elif len(food) < 4:
             print("\nThat is way to short...try again")
-            food = input("\n...and what did you last have for food?\n")   
+            food = input("\n...and what did you last have for food?\n")
         elif len(food) > 9:
             print("\nThat is way to long...try again")
             shirt = input("\nWhat color is your shirt?\n")
