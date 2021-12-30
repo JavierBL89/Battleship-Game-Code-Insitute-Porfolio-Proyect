@@ -82,8 +82,8 @@ class Board:
         """
         if player_shot not in self.player_shots:
             self.player_shots.append(player_shot)
-            self.row = player_shot[0] - 1
-            self.column = player_shot[1] - 1
+            self.row = int(player_shot[0]) - 1
+            self.column = int(player_shot[1]) - 1
             if player_shot not in self.computer_ships:
                 self.board[self.row][self.column] = "X"
             elif player_shot in self.computer_ships:
