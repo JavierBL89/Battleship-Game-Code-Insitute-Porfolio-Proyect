@@ -13,7 +13,7 @@ class Board:
     """
     def __init__(self, size):
         self.size = size
-        self.board = [["-" for i in range(1, size)] for row in range(1, size)]
+        self.board = [["-" for i in range(size)] for row in range(size)]
         self.player_shots = []
         self.computer_shots = []
         self.player_ships = [(7, 5), (4, 5), (0, 3)]
@@ -63,10 +63,10 @@ class Board:
         """
         Creates computer random shots
         """
-        # self.x = random.randint(1, 8)
-        # self.y = random.randint(1, 8)
-        self.x = 7
-        self.y = 5
+        self.x = random.randint(1, 8)
+        self.y = random.randint(1, 8)
+        # self.x = 7
+        # self.y = 5
         compu_guess = self.x, self.y
         if compu_guess not in self.computer_shots:
             self.computer_shots.append(compu_guess)
@@ -82,8 +82,8 @@ class Board:
         """
         if player_shot not in self.player_shots:
             self.player_shots.append(player_shot)
-            self.row = player_shot[0]
-            self.column = player_shot[1]
+            self.row = player_shot[0] - 1
+            self.column = player_shot[1] - 1
             if player_shot not in self.computer_ships:
                 self.board[self.row][self.column] = "X"
             elif player_shot in self.computer_ships:
@@ -103,8 +103,8 @@ class Board:
             self.x = boat[0]
             self.y = boat[1]
             self.board[self.x][self.y] = "S"
-        self.row = computer_shot[0]
-        self.column = computer_shot[1]
+        self.row = computer_shot[0] - 1
+        self.column = computer_shot[1] - 1
         if computer_shot not in self.player_ships:
             self.board[self.row][self.column] = "X"
         elif computer_shot in self.player_ships:
@@ -160,7 +160,7 @@ I'll come back stronger and fuck your pretty ass!!\n""")
                 while not restart.lower() == "y" or restart.lower == "n":
                     print("\nYou must enter a valid answer 'y/n'")
                     time.sleep(1)
-                    restart = input("\nYou wanna try and give him hell? 'y/n'\n")
+                    restart = input("\nYou wanna try again and give him hell? 'y/n'\n")
                 if restart.lower == "y":
                     restart()
                 elif restart.lower() == "n":
@@ -235,11 +235,11 @@ def play_game(computer, player, player_game):
         
 
 def main():
-    size = 9
+    size = 8
     computer = Board(size)
     player = Board(size)
     global player_name
-    player_name = intro_game(size, computer, player)   
+    player_name = intro_game(size, computer)   
     play_game(computer, player, player_name)
 
 

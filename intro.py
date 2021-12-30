@@ -1,7 +1,7 @@
 import time
 
 
-def intro_game(size, computer, player):
+def intro_game(size, computer):
     print("\nOhh! Long time waiting for this!")
     time.sleep(1)
     print("\nBefore get started, let me ask you...\n")
