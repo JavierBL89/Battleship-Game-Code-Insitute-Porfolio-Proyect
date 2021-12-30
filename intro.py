@@ -7,10 +7,29 @@ def intro_game(size, computer, player):
     print("\nBefore get started, let me ask you...\n")
     time.sleep(1)
     shirt = input("\nWhat color is your ugly shirt?\n")
+    while True:
+        if shirt.isdigit():
+            print(f"\nI don`t think '{shirt}' reffers to any color boy!")
+            shirt = input("\nWhat color is your ugly shirt?\n")
+        elif len(shirt) < 4:
+            print("\nThat is way to short...try again")
+            shirt = input("\nWhat color is your ugly shirt?\n")
+        else:
+            break
     time.sleep(1)
     print("\nahgg!! Really ugly")
     time.sleep(1)
     food = input("\n...and what did you last have for food?\n")
+    while True:
+        if food.isdigit():
+            print("\nAll names must be made of alphabetic characters boy!")
+            food = input("\n...and what did you last have for food?\n")
+        elif len(food) < 4:
+            print("\nThat is way to short...try again")
+            food = input("\n...and what did you last have for food?\n")   
+        else:
+            break
+
     player_name = shirt + food
     player_name = player_name.capitalize()
     print("\nI always like to know my adversary's name")

@@ -1,6 +1,7 @@
 import random
 import time
 import random
+import sys
 from intro import intro_game
 player_name = ""
 
@@ -156,8 +157,14 @@ I'll come back stronger and fuck your pretty ass!!\n""")
                 time.sleep(1)
                 print("\nThis man is full of him self!")
                 restart = input("\nYou wanna try and give him hell? y/n\n")
-                if restart.lower() == "y":
-                    restart_game()
+                while not restart.lower() == "y" or restart.lower == "n":
+                    print("\nYou must enter a valid answer 'y/n'")
+                    time.sleep(1)
+                    restart = input("\nYou wanna try and give him hell? 'y/n'\n")
+                if restart.lower == "y":
+                    restart()
+                elif restart.lower() == "n":
+                    sys.exit()
             else:
                 print("\nah aaah!!")
                 time.sleep(1)
@@ -184,7 +191,7 @@ def restart_game():
     print("\nI will let you shot first!")
     print("\n...consider it as a profesional courtesy...")
     time.sleep(1)
-    remain()
+    main()
 
 
 def play_game(computer, player, player_game):
@@ -206,7 +213,7 @@ def play_game(computer, player, player_game):
         count = computer.validate_shot(computer_shot, "computer")
         time.sleep(1)
         player.check_guess_2(computer_shot)
-        # print(f"     {player_name}")
+        print(f"     {player_name}")
         print("  1 2 3 4 5 6 7 8")
         player.populate_board("player", computer_shot)
         game = Board.game_over(count)
