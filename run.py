@@ -91,9 +91,7 @@ class Board:
             return self.board
         elif player_shot in self.player_shots:
             row, col = player_shot
-            row += 1
-            col += 1
-            print(f"Coordenates {row, col} already been used")
+            print(f"\nCoordenates {row, col} already been used")
             print("Shot again!")
             self.player_guess()
             
@@ -206,6 +204,7 @@ def play_game(computer, player, player_game):
         player_shot = player.player_guess()
         computer_shot = computer.computer_guess()
         time.sleep(1)
+        computer.check_guess(player_shot)
         count = player.validate_shot(player_shot, "player")
         time.sleep(2)
         print(f"\nMy shot is... {computer_shot}")
@@ -220,7 +219,6 @@ def play_game(computer, player, player_game):
         if game is False:
             break
         time.sleep(1)
-        computer.check_guess(player_shot)
         print("\n      Radar    ")
         print("  1 2 3 4 5 6 7 8")
         computer.populate_board("computer", player_shot)
@@ -239,7 +237,7 @@ def main():
     computer = Board(size)
     player = Board(size)
     global player_name
-    player_name = intro_game(size, computer)   
+    # player_name = intro_game(size, computer)   
     play_game(computer, player, player_name)
 
 
