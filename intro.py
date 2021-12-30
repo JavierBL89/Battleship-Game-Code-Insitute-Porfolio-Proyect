@@ -10,10 +10,13 @@ def intro_game(size, computer, player):
     while True:
         if shirt.isdigit():
             print(f"\nI don`t think '{shirt}' reffers to any color boy!")
-            shirt = input("\nWhat color is your ugly shirt?\n")
+            shirt = input("\nWhat color is your shirt?\n")
         elif len(shirt) < 4:
             print("\nThat is way to short...try again")
-            shirt = input("\nWhat color is your ugly shirt?\n")
+            shirt = input("\nWhat color is your shirt?\n")
+        elif len(shirt) > 6:
+            print("\nThat is way to long...try again")
+            shirt = input("\nWhat color is your shirt?\n")
         else:
             break
     time.sleep(1)
@@ -27,6 +30,9 @@ def intro_game(size, computer, player):
         elif len(food) < 4:
             print("\nThat is way to short...try again")
             food = input("\n...and what did you last have for food?\n")   
+        elif len(food) > 9:
+            print("\nThat is way to long...try again")
+            shirt = input("\nWhat color is your shirt?\n")
         else:
             break
 
