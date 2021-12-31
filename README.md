@@ -29,3 +29,43 @@ The deployment terminal is set to 80 columns by 24 rows. That means that each li
 
 -----
 Happy coding!
+
+![img responsiveness](assets/images/Captura de pantalla(121).png)
+![View the live website on Heroku](https://battleship-py-cod-ins-prj-3.herokuapp.com/)
+# Overview
+
+This is a very simple computized version of the very popular Battleship game board launched in 1931, see ![Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)).
+
+The game is only run into the terminal and utilises the Code Institue template which makes possible to run the game in the browser.
+
+## How to play
+
+* The number of ships is standard, and the ships will be placed randomly.
+* The user must enter row and column as a shot target.
+* The radar will show one of the above symbols in response to the user's guess.
+* Coputer guesses will also be displayed.
+* The game will finish when one of the players gets to shink all of the opponent's boats.
+
+**Game Leyend**
+
+**S** stands for boat
+**$** stands for hit boat
+**X** stands for missed shot
+
+
+* Play game ![Battleship](https://battleship-py-cod-ins-prj-3.herokuapp.com/)
+
+# Table Contents
+
+### [Planning stage](#planning-stage)
+
+- Target audiences
+- User stories
+- Workchart
+
+### [Features](#features)
+
+- Board size
+- Ships
+
+### [Future features](#future-features)
