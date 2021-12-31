@@ -1,35 +1,3 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome USER_NAME,
-
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
-
-## Reminders
-
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
-
 ![img responsiveness](assets/images/Captura de pantalla(121).png)
 ![View the live website on Heroku](https://battleship-py-cod-ins-prj-3.herokuapp.com/)
 # Overview
@@ -61,11 +29,102 @@ The game is only run into the terminal and utilises the Code Institue template w
 
 - Target audiences
 - User stories
-- Workchart
+- Flow Chart
 
 ### [Features](#features)
 
 - Board size
 - Ships
+- Shots
 
 ### [Future features](#future-features)
+
+### [Testing](#testing)
+
+- Manual testing
+- Light House
+- VS Debugger
+- Validators
+
+### [Technology Used](#technology-used)
+
+- Languajes
+- Libraries
+
+### [Bugs](#bugs)
+
+- Fixed bugs
+- Known bugs
+
+### [Credits](#credits)
+
+- Content
+- Acknowledgements
+
+## Planing stage
+
+## Target audience
+
+ Anyone looking for a strategy game to have fun on their own for a little while, by it at home, bus, metro, etc, since it is playable on any device.
+
+ ## User stories
+
+ - As a user i want a clear and straightforward game instructions.
+
+ - As a user i want an easy and simple online game to start and finish it quickly.
+
+ - As a user a want it to be challenging.
+
+ - As a user i want it to be visually attractive.
+
+## Flow Chart
+
+This is a simple flow chart of the game flow to scheme the steps needed to develop it
+
+I used free app ![draw.io](https://app.diagrams.net/)
+
+![](assets/images/flow-chart.jpg)
+
+## Features
+
+At this point the game is limited in features due to its simplicity. 
+
+ - Size: 
+
+The game board size is set to 8x8, with no chance for the user to pick at their choice.
+
+ - Ships:
+
+ At this point the number of ships for every player is also set to 5, being these of a single cell length.
+
+ - Shots:
+
+ The user is allow to take their guess manually.
+
+ ## Future features
+
+ Many features could added to improve the user's experience:
+
+ * Let user pick board size
+ * Let the user position boats on their board
+ * Let user pick game difficulty by reducing the number of boats or/and implementing a limited number of shots available, also by limitating the time avaiblable to finish the game.
+ * Add visual experience with a nice interface
+ * Make it multiplayer
+
+ ## Testing
+
+ - Manual testing
+
+ When developing i used manual testing by printing out the code so very often to check whether if it was working as wanted. 
+
+ - VS Debugger
+
+ I used a extension of Visual Studio named Jupiter, which i still don't know how to use it...
+ The debugger tool tells you all the error while coding like extra whitespaces, code lines way to long.
+ It also allows you to debugg using breakpoints, which i still don't understand, sometimes it shows an error but the terminal runs perfectly...
+
+ - Validators
+
+  - HTML
+
+ 

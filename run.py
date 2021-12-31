@@ -64,10 +64,10 @@ class Board:
         """
         Creates computer random shots
         """
-        self.x = random.randint(1, 8)
-        self.y = random.randint(1, 8)
-        # self.x = 7
-        # self.y = 5
+        # self.x = random.randint(1, 8)
+        # self.y = random.randint(1, 8)
+        self.x = 7
+        self.y = 5
         compu_guess = self.x, self.y
         if compu_guess not in self.computer_shots:
             self.computer_shots.append(compu_guess)
@@ -146,22 +146,28 @@ I'll come back stronger and fuck your pretty ass!!\n""")
             if count == 1:
                 print("\n..oohhh what a great feeling...")
                 time.sleep(1)
-                print("\n...watch me enjoying the victory's smoke..")
+                print("\nWatch me enjoying the victory's smoke..")
                 time.sleep(1)
                 print("\n...I'll be waiting for you "
                       "to come back...right here!")
                 time.sleep(1)
                 print("\nThis man is full of him self!")
-                restart = input("\nYou wanna try and give him hell? y/n\n")
-                while not restart.lower() == "y" or restart.lower == "n":
-                    print("\nYou must enter a valid answer 'y/n'")
-                    time.sleep(1)
-                    restart = input("\nYou wanna try again "
-                                    "and give him hell? 'y/n'\n")
-                if restart.lower == "y":
-                    restart()
-                elif restart.lower() == "n":
-                    sys.exit()
+                restart = input("\nYou wanna try and give him hell? 'y/n'\n")
+                while True:
+                    restart.lower()
+                    if restart == "y":
+                        restart_game()
+                    elif restart == "n":
+                        print("I guess you must need a break..")
+                        print("See ya soon boy!")
+                        sys.exit()
+                    elif restart != "y" or restart != "n":
+                        print("\nYou must enter a valid answer 'y/n'")
+                        time.sleep(1)
+                        restart = input("\nYou wanna try again "
+                                        "and give him hell? 'y/n'\n")
+                        restart.lower()
+                    
             else:
                 print("\nah aaah!!")
                 time.sleep(1)
