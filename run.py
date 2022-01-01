@@ -112,6 +112,7 @@ class Board:
         row_number = 0
         if player == "player":
             # check_guess_2()
+            print(self.player_ships)
             for boat in self.player_ships:
                 self.x = boat[0] - 1
                 self.y = boat[1] - 1
@@ -120,6 +121,7 @@ class Board:
             if shot in self.player_ships:
                 x = shot[0] - 1
                 y = shot[1] - 1
+                print(x, y)
                 self.board[x][y] = "$"
 
             for row in self.board:
@@ -219,11 +221,11 @@ def play_game(computer, player, player_game, size):
         computer_shot = computer.computer_guess()
         time.sleep(1)
         computer.check_guess(player_shot)
-        count = player.validate_shot(player_shot, "player")
+        count = computer.validate_shot(player_shot, "player")
         time.sleep(2)
         print(f"\nMy shot is... {computer_shot}")
         time.sleep(2)
-        count = computer.validate_shot(computer_shot, "computer")
+        count = player.validate_shot(computer_shot, "computer")
         time.sleep(1)
         player.check_guess_2(computer_shot)
         print(f"     {player_name}")
