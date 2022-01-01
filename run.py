@@ -268,6 +268,10 @@ def play_game(computer, player, player_game, size):
 
 def main():
     global player_name
+    global player_boats
+    global compu_boats
+    player_boats = 3
+    compu_boats = 3
     size = 5
 
     computer = Board(size, "computer")
