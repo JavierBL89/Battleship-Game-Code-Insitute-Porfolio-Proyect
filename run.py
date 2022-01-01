@@ -196,7 +196,7 @@ You win this time round...
                         time.sleep(1)
                         restart = input("\nYou wanna try again "
                                         "and give him hell? 'y/n'\n")
-                        restart.lower()                
+                        restart.lower()
             else:
                 print("\nah aaah!!")
                 time.sleep(1)
@@ -267,12 +267,15 @@ def play_game(computer, player, player_game, size):
 
 
 def main():
-    size = 5
     global player_name
+    size = 5
 
     computer = Board(size, "computer")
     player = Board(size, player_name)
-    # player_name = intro_game(size, computer)
+    if not player_name:
+        player_name = intro_game(size, computer)
+    else:
+        pass
     play_game(computer, player, player_name, size)
 
 
