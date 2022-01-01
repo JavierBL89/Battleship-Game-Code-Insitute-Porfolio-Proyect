@@ -18,22 +18,24 @@ class Board:
         self.player_shots = []
         self.computer_shots = []
         self.player_ships = []
-        self.computer_ships = [(5, 5), (4, 5), (0, 3), (2, 0), (5, 2)]
+        self.computer_ships = []
 
     def random_ship(self, size, name):
         """
         Create 5 random ships for each player
         """
         total_ships = 1
-        while total_ships <= 8:
-            x = random.randint(1, size) 
-            y = random.randint(1, size) 
+        while total_ships <= 4:
+            x, y = random.randint(1, size), random.randint(1, size)
             if name == "computer":
                 self.computer_ships.append((x, y))
-            elif name == "player":
+                # if len(self.computer_ships) != len(set(self.computer_ships)):
+                #     self.random_ship(size, name)
+                # else:
+                #     pass
+            if name == "player":
                 self.player_ships.append((x, y))
             total_ships += 1
-        return total_ships
 
     def player_guess(self):
         """
@@ -75,7 +77,6 @@ class Board:
                 self.computer_guess()
         return compu_guess
 
-
     def check_guess(self, player_shot):
         """
         Check user's shot against computer battleship
@@ -112,7 +113,7 @@ class Board:
         row_number = 0
         if player == "player":
             # check_guess_2()
-            print(self.player_ships)
+            # print(self.player_ships)
             for boat in self.player_ships:
                 self.x = boat[0] - 1
                 self.y = boat[1] - 1
@@ -121,7 +122,6 @@ class Board:
             if shot in self.player_ships:
                 x = shot[0] - 1
                 y = shot[1] - 1
-                print(x, y)
                 self.board[x][y] = "$"
 
             for row in self.board:
@@ -178,8 +178,7 @@ I'll come back stronger and fuck your pretty ass!!\n""")
                         time.sleep(1)
                         restart = input("\nYou wanna try again "
                                         "and give him hell? 'y/n'\n")
-                        restart.lower()
-                    
+                        restart.lower()                  
             else:
                 print("\nah aaah!!")
                 time.sleep(1)
@@ -213,7 +212,7 @@ def play_game(computer, player, player_game, size):
     """
     Start up game and run till the end of it
     """
-    # computer.random_ship(size, "computer")
+    computer.random_ship(size, "computer")
     player.random_ship(size, "player")
     game = True
     while game:
