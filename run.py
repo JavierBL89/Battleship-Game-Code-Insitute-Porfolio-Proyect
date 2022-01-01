@@ -163,7 +163,7 @@ You win this time round...
                         print("\nYou must enter a valid answer 'y/n'")
                         time.sleep(1)
                         restart = input("\ngive me another chance...'y/n'\n")
-                        restart.lower()             
+                        restart.lower()
             else:
                 print("\nYou shunk my boat motherfucker!")
             return compu_boats
