@@ -229,14 +229,14 @@ def play_game(computer, player, player_game, size):
         time.sleep(1)
         player.check_guess_2(computer_shot)
         print(f"     {player_name}")
-        print("  1 2 3 4 5 6 7 8")
+        print("  1 2 3 4 5")
         player.populate_board("player", computer_shot)
         game = Board.game_over(count)
         if game is False:
             break
         time.sleep(1)
         print("\n      Radar    ")
-        print("  1 2 3 4 5 6 7 8")
+        print("  1 2 3 4 5")
         computer.populate_board("computer", player_shot)
         game = Board.game_over(count)
         if game is False:

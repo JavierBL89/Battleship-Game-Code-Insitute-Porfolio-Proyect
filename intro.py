@@ -65,7 +65,7 @@ def intro_game(size, computer):
     print("\n....I will lend you a radar...")
     time.sleep(2)
     print("\n      Radar")
-    print("  1 2 3 4 5 6 7 8")
+    print("  1 2 3 4 5")
     computer.populate_board("computer", size)
     print("\n...and i will let you shot first!")
     time.sleep(1)
