@@ -252,7 +252,8 @@ def play_game(computer, player, player_game, size):
         print(computer_wins)
         time.sleep(1)
         player.check_guess_2(computer_shot)
-        print(f"     {player_name}")
+        print(f"{player_name}")
+        print("...........")
         print("  1 2 3 4 5")
         player.populate_board("player", computer_shot)
         player_boats = Board.game_over(computer_wins)
@@ -261,7 +262,8 @@ def play_game(computer, player, player_game, size):
         else:
             player_boats = True
         time.sleep(1)
-        print("\n      Radar    ")
+        print("\n   Radar   ")
+        print("...........")
         print("  1 2 3 4 5")
         computer.populate_board("computer", player_shot)
 
