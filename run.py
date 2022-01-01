@@ -4,6 +4,8 @@ import random
 import sys
 from intro import intro_game
 player_name = ""
+player_boats = 3
+compu_boats = 3
 
 
 class Board:
@@ -25,7 +27,7 @@ class Board:
         Create 5 random ships for each player
         """
         total_ships = 1
-        while total_ships <= 4:
+        while total_ships <= 10:
             x, y = random.randint(1, size), random.randint(1, size)
             if name == "computer":
                 self.computer_ships.append((x, y))
@@ -64,7 +66,7 @@ class Board:
         """
         self.x = random.randint(1, 5)
         self.y = random.randint(1, 5)
-        # self.x = 7
+        # self.x = 5
         # self.y = 5
         compu_guess = self.x, self.y
         while compu_guess not in self.computer_shots:
@@ -132,30 +134,55 @@ class Board:
         Validates whether the shot is hit or missed
         Response accordigly to the user
         """
-        count = 0
+        global player_boats
+        global compu_boats
         if shooter == "player" and shot in self.computer_ships:
-            count += 1
-            if count == 2:
+            compu_boats -= 1
+            if compu_boats == 0:
+                time.sleep(2)
                 print("""\nWell well well little bitch!!\n
-You win this time...\n
-I'll come back stronger and fuck your pretty ass!!\n""")
+You win this time round...
+""")
+                time.sleep(2)
+                print("\nYou think you're brave??")
+                time.sleep(1)
+                restart = input("\n..then give me another chance...'y/n'\n")
+                while True:
+                    restart.lower()
+                    if restart == "y":
+                        restart_game()
+                    elif restart == "n":
+                        time.sleep(1)
+                        print("Nooo??! you little pussy!!")
+                        time.sleep(1)
+                        print("\nI will come back stronger then!")
+                        time.sleep(1)
+                        print("\nSee ya soon boy!")
+                        sys.exit()
+                    elif restart != "y" or restart != "n":
+                        print("\nYou must enter a valid answer 'y/n'")
+                        time.sleep(1)
+                        restart = input("\ngive me another chance...'y/n'\n")
+                        restart.lower()             
             else:
                 print("\nYou shunk my boat motherfucker!")
+            return compu_boats
         elif shooter == "player" and shot not in self.computer_ships:
             print("\nYou missed!")
         elif shooter == "computer" and shot in self.player_ships:
-            print(shot, "here")
-            # count += 1
-            if count == 2:
+            player_boats -= 1
+            if player_boats == 0:
                 print("\n..oohhh what a great feeling...")
+                time.sleep(1)
+                print("\nI win this time round!")
                 time.sleep(1)
                 print("\nWatch me enjoying the victory's smoke..")
                 time.sleep(1)
                 print("\n...I'll be waiting for you "
                       "to come back...right here!")
-                time.sleep(1)
+                time.sleep(2)
                 print("\nThis man is full of him self!")
-                restart = input("\nYou wanna try and give him hell? 'y/n'\n")
+                restart = input("\nLet's try again and give him hell! 'y/n'\n")
                 while True:
                     restart.lower()
                     if restart == "y":
@@ -169,17 +196,17 @@ I'll come back stronger and fuck your pretty ass!!\n""")
                         time.sleep(1)
                         restart = input("\nYou wanna try again "
                                         "and give him hell? 'y/n'\n")
-                        restart.lower()                  
+                        restart.lower()                
             else:
                 print("\nah aaah!!")
                 time.sleep(1)
                 print("\nGot you!")
+            return player_boats
         elif shooter == "computer" and shot not in self.player_ships:
             print("\nMissed!...\n")
-        return count
 
-    def game_over(count):
-        if count == 3:
+    def game_over(boats):
+        if boats == 0:
             return False
 
 
@@ -211,31 +238,32 @@ def play_game(computer, player, player_game, size):
         computer_shot = computer.computer_guess()
         time.sleep(1)
         computer.check_guess(player_shot)
-        count = computer.validate_shot(player_shot, "player")
+        player_win = computer.validate_shot(player_shot, "player")
+        print(player_win)
+        compu_boats = Board.game_over(player_win)
+        if compu_boats is False:
+            break
+        else:
+            compu_boats = True
         time.sleep(2)
         print(f"\nMy shot is... {computer_shot}")
         time.sleep(2)
-        count = player.validate_shot(computer_shot, "computer")
+        computer_wins = player.validate_shot(computer_shot, "computer")
+        print(computer_wins)
         time.sleep(1)
         player.check_guess_2(computer_shot)
         print(f"     {player_name}")
         print("  1 2 3 4 5")
         player.populate_board("player", computer_shot)
-        game = Board.game_over(count)
-        if game is False:
+        player_boats = Board.game_over(computer_wins)
+        if player_boats is False:
             break
+        else:
+            player_boats = True
         time.sleep(1)
         print("\n      Radar    ")
         print("  1 2 3 4 5")
         computer.populate_board("computer", player_shot)
-        game = Board.game_over(count)
-        if game is False:
-            print("I knew i could beat you!\n")
-            print("Pricks like you must be erased "
-                  "of this unfilthy planet...\n")
-            break
-        else:
-            game = True
 
 
 def main():
