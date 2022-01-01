@@ -29,10 +29,6 @@ class Board:
             x, y = random.randint(1, size), random.randint(1, size)
             if name == "computer":
                 self.computer_ships.append((x, y))
-                # if len(self.computer_ships) != len(set(self.computer_ships)):
-                #     self.random_ship(size, name)
-                # else:
-                #     pass
             if name == "player":
                 self.player_ships.append((x, y))
             total_ships += 1
@@ -100,8 +96,6 @@ class Board:
     def check_guess_2(self, computer_shot):
         self.row = computer_shot[0] - 1
         self.column = computer_shot[1] - 1
-        # if computer_shot in self.player_ships:
-        #     self.board[self.row][self.column] = "$"
         if computer_shot not in self.player_ships:
             self.board[self.row][self.column] = "X"
         return self.board
@@ -112,13 +106,10 @@ class Board:
         """
         row_number = 0
         if player == "player":
-            # check_guess_2()
-            # print(self.player_ships)
             for boat in self.player_ships:
                 self.x = boat[0] - 1
                 self.y = boat[1] - 1
                 self.board[self.x][self.y] = "S"
-                # print(shot)
             if shot in self.player_ships:
                 x = shot[0] - 1
                 y = shot[1] - 1
