@@ -1,4 +1,5 @@
-![img responsiveness](assets/images/Captura-de-pantalla(121).png)
+![img responsiveness](assets/images/devices-image.png)
+
 [View the live website on Heroku](https://battleship-py-cod-ins-prj-3.herokuapp.com/)
 
 # Overview
