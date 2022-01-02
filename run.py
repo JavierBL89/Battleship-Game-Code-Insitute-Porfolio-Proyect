@@ -280,10 +280,10 @@ def main():
     player = Board(size, player_name)
     computer.random_ship(size, "computer")
     player.random_ship(size, "player")
-    # if not player_name:
-    #     player_name = intro_game(size, computer, player_boats, computer_boats)
-    # else:
-    #     pass
+    if not player_name:
+        player_name = intro_game(size, computer, player_boats, computer_boats)
+    else:
+        pass
     play_game(computer, player, player_name)
 
 

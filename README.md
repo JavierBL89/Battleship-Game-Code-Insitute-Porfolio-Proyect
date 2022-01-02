@@ -95,35 +95,34 @@ At this point the game is limited in features due to its simplicity.
 - Player's name:
 
  The user must enter a player name which will be use later in the narrative and shown to indicate their game board.
-![](assets/images/Captura de pantalla (141).png)
+![](assets/images/Captura-de-pantalla(141).png)
 
  - Narrative:
 
  To improve the UX and inmerse the user into the game, a fun and a short narrative will be introduced from the very start all along till the very end of the game.
-![](assets/images/Captura de pantalla (143).png)
+![](assets/images/Captura-de-pantalla(143).png)
 
  - Size: 
 
 The game board size is set to 5x5, with no chance for the user to pick at their choice.
-![](assets\images\Captura de pantalla (144).png)
+![](assets\images\Captura-de-pantalla(144).png)
 
  - Ships:
 
- At this point the number of ships for both players must vary due to code issues, one player may find more ships thant the other, which makes it a bit more interserting, these ships are of a single cell length.
-![](
+ At this point the number of ships for both players must vary due to code issues, one player may have more ships than the other, which makes it a bit more interserting, these ships are of a single cell length.
+![](assets/images/Captura-de-pantalla(133).png)
 
-)
  - Shots:
 
  The user is allow to take their guess manually.
-![](
+![](assets/images/Captura-de-pantalla(133).png)
 
-)
  - Validation:
 
 * Player's name.
 
   1. Firts input asked will have a minimun of 3 characters, and a maximun of 6.
+
   2. Second input asked will have a minimun of 4 characters, and a
 
 * Player's guess.
@@ -149,13 +148,11 @@ The game board size is set to 5x5, with no chance for the user to pick at their 
 
  - Manual testing
 
- When developing i used manual testing by printing out the code so very often to check whether if the code it was working as wanted. 
+ When developing i used manual testing by printing out the code so very often to check whether if the code was working as wanted. 
 
 - Validation
 
 Any input entered by the user is validated against certain pass criteria. I have checked its functionallity by entering many diferent inputs many times trying to break the code, i found a leak when entering user's guess and fixed.(see on bugs fixed section bellow)
-
-The loop kept runnig till the input was valid but afetr a few attempts it would crashed and throw all the errors stored. The variable's value input kept storing the data over and over while loop run, which made crash. I fixed by giving the variable a empty string at the top of the loop
 
  - VS Debugger
 
@@ -167,13 +164,13 @@ The loop kept runnig till the input was valid but afetr a few attempts it would 
 
   - HTML ![W3C](https://validator.w3.org/)
 
-  * It shows errors and warnings on the index.html file provided by Code Institute Template.
+   It shows errors and warnings on the index.html file provided by Code Institute Template.
 
   ![](assets/images/index_validator.png)
 
   - Python ![PEP8](http://pep8online.com/)
 
-  * All py files showed no errors or warnings
+   All py files showed no errors or warnings
 
 
   ## Technology Used
@@ -192,13 +189,13 @@ The loop kept runnig till the input was valid but afetr a few attempts it would 
 
 On this project i faced problems and challenges on every single method as new to Python and classes which i still need to work on to understand them. 
 
-I tried to write down all the problems i faced while developing, and takin images of them. so i could explain them on this section.
+I tried to write down all the problems i faced while developing, and takin images of them so i could explain them on this section.
 
 Now i go through all of them on my notebook and they don't make any sense...i don't even remember them... so here only the ones that make sense :)
 
  - **Fixed bugs**
 
- * **Bug**. Whe creating a board i wanted to show numbers on every row as landmarks for the user. The aproched i took was **1st image**, but when printing the board with ships or shots nor these or the row numbers were shown.
+ * **Bug**. When creating a board i wanted to show numbers on every row as landmarks for the user. The approched i took was **see 1st image**, but when printing the board with ships or shots nor these or the row numbers were shown.
     
     **Fix**. From one of the resourses metioned bellow(see Code Credits) i took the next approach. Initialize a count outside the if statement, and increases along depending of the numbers of rows in th board **see commented code on the 2nd image** 
 
@@ -232,14 +229,43 @@ Now i go through all of them on my notebook and they don't make any sense...i do
    3. Print board neatly and updated.
    ![](assets/images/Captura-de-pantalla(137).png)
 
+* **Bug**. The user's guess input validation would throw all the errors stored after few a failure attemps and the code woul break.
+
+  **Fix**. The loop kept runnig till the input was valid but afetr a few attempts it would crashed and throw all the errors stored. The variable's value input kept storing the data over and over while loop run, which made crash. I fixed by giving the variable a empty string at the top of the loop.
+
  - **Unfixed bugs**
 
- * Boats duplicated. The user may find different number of boats for each player down to a replication of boats.
+ * Boats duplicated. Players might have different number of boats for each player down to a replication of boats.
 
  After having my last facetime session with my mentor, i realized that my random ships method also creates duplicates boats... so could not go through it with him, and that was only 2 days before the submit project deathline. 
  I tried hard to fix it but i was burning off time and had to keep going, from this attempt of fixing it i found a way to keep track of the actual number of boats in every list.
  I convert the list in sets, and gice the length of the set to a global variable.
  ![](assets/images/Captura-de-pantalla(147).png)
+
+## Credits
+
+- Code
+
+At first i didn't even know how to code this project, and only after watching the **Code Institute demo**, i could start following that approach.
+It is relly helpfull fro unexperienced peope like me!
+
+Also i wathed some tutorials that helped me how to create a matrix(which is also covered on the python essentials module), how to update boards, and other many things.
+
+* Object Oriented Battleship game
+
+ - Part 1 (<https://youtu.be/xz9GrOwQ_5E>)
+ - Part 2 (<https://youtu.be/CIv7lPZy9nQ>)
+ - Part 3 (<https://youtu.be/jshgccgBs2U>)
+
+* Functional Battleship game
+
+ - (<https://youtu.be/7Ki_2gr0rsE>)
+
+ ## Acknowledge
+
+First and foremost, lots of thankst to [Richard Wells](https://github.com/D0nni387) my mentor from who i learn many things in every session and helped me through when i was stuck.
+
+Thanks as well to Code Institute for providing that demo, as the Love Sandwitches code along project has nothing to do with building a project with OOP approach.
 
 
 
