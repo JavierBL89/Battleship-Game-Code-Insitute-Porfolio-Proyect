@@ -31,7 +31,7 @@ class Board:
         global player_boats
         global computer_boats
         total_ships = 1
-        while total_ships <= 10:
+        while total_ships <= 5:
             x, y = random.randint(1, size), random.randint(1, size)
             if name == "computer":
                 self.computer_ships.append((x, y))
@@ -51,13 +51,13 @@ class Board:
         try:
             print("\nYou shot!")
             guess_row = int(input("\nRow: "))
-            while guess_row not in [1, 2, 3, 4, 5, 6, 7, 8]:
+            while guess_row not in [1, 2, 3, 4, 5]:
                 print("Please enter  valid data, "
                       "only whole numbers from 1 to 8 are valid!\n")
                 guess_row = int(input("Row: "))
 
             guess_column = int(input("Column: "))
-            while guess_column not in [1, 2, 3, 4, 5, 6, 7, 8]:
+            while guess_column not in [1, 2, 3, 4, 5]:
                 print("Please enter  valid data, "
                       "only whole numbers from 1 to 8 are valid!\n")
                 guess_column = int(input("Column: "))
@@ -72,8 +72,6 @@ class Board:
         """
         self.x = random.randint(1, 5)
         self.y = random.randint(1, 5)
-        # self.x = 5
-        # self.y = 5
         compu_guess = self.x, self.y
         while compu_guess not in self.computer_shots:
             self.computer_shots.append(compu_guess)
@@ -123,13 +121,11 @@ class Board:
                 x = shot[0] - 1
                 y = shot[1] - 1
                 self.board[x][y] = "$"
-
             for row in self.board:
                 board = " ".join(row)
                 row_number += 1
                 print(row_number, board)
         elif player == "computer":
-            print(self.computer_ships)
             for row in self.board:
                 board = " ".join(row)
                 row_number += 1
