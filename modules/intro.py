@@ -2,7 +2,6 @@ import time
 
 
 def intro_game(size, computer, player_boats, computer_boats):
-    time.sleep(2)
     print("\nOhh! Long time waiting for this!")
     time.sleep(1)
     print("\nBefore get started, let me ask you...\n")
@@ -11,13 +10,14 @@ def intro_game(size, computer, player_boats, computer_boats):
     while True:
         if shirt.isdigit():
             print(f"\nI don`t think '{shirt}' reffers to any color boy!")
-            shirt = input("\nWhat color is your shirt?\n")
+            print("\nTry again!")
+            shirt = input("\n")
         elif len(shirt) < 3:
             print("\nThat is way to short...try again")
-            shirt = input("\nWhat color is your shirt?\n")
+            shirt = input("\n")
         elif len(shirt) > 6:
             print("\nThat is way to long...try again")
-            shirt = input("\nWhat color is your shirt?\n")
+            shirt = input("\n")
         else:
             break
     time.sleep(1)
@@ -25,13 +25,16 @@ def intro_game(size, computer, player_boats, computer_boats):
     while True:
         if food.isdigit():
             print("\nAll names must be made of alphabetic characters boy!")
-            food = input("\n...and what did you last have for food?\n")
+            time.sleep(1)
+            print("\nTry again!")
+            food = input("\n")
         elif len(food) < 4:
+            time.sleep(1)
             print("\nThat is way to short...try again")
-            food = input("\n...and what did you last have for food?\n")
+            food = input("\n")
         elif len(food) > 9:
             print("\nThat is way to long...try again")
-            shirt = input("\nWhat color is your shirt?\n")
+            shirt = input("\n")
         else:
             break
 
@@ -49,7 +52,14 @@ def intro_game(size, computer, player_boats, computer_boats):
     print("       Number of ships      ")
     print(f"    {computer_boats}                  {player_boats}\n  ")
     print("----------------------------")
-    time.sleep(4)
+    time.sleep(2)
+    if computer_boats and player_boats != 5:
+        pass
+    else:
+        print("\noohh seems we don't have all the boats available right now...")
+        time.sleep(1)
+        print("\n... but we will fight anyway!")
+        time.sleep(2)
     print("\n   +++++++++++++++++++")
     print("          LEYEND        ")
     print("    S = boats           ")
