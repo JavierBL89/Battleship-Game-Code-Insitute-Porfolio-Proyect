@@ -1,11 +1,10 @@
 ![img responsiveness](assets/images/devices-image.png)
 
-[View the live website on Heroku](https://battleship-py-cod-ins-prj-3.herokuapp.com/)
-
 # Overview
 
-This is a very simple computized version of the very popular Battleship game board launched in 1931, in wich one player needs to find and shink the opponent's boats to win the game. 
-See ![Wikipedia](<https://en.wikipedia.org/wiki/Battleship_(game)>).
+This is a very simple computized version of the very popular Battleship game board launched in 1931, in wich one player needs to find and shink the opponent's boats to win the game.
+
+See [Wikipedia](<https://en.wikipedia.org/wiki/Battleship_(game)>)
 
 The game is only run into the terminal and utilises the Code Institue template which makes possible to run the game in the browser.
 
