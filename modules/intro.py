@@ -1,7 +1,7 @@
 import time
 
 
-def intro_game(size, computer):
+def intro_game(size, computer, player_boats, computer_boats):
     print("\nOhh! Long time waiting for this!")
     time.sleep(1)
     print("\nBefore get started, let me ask you...\n")
@@ -48,9 +48,7 @@ def intro_game(size, computer):
     print("          Players           ")
     print(f" Computer         {player_name}\n")
     print("       Number of ships      ")
-    print("    5                  5\n  ")
-    print("           Score            ")
-    print("    0                  0    ")
+    print(f"    {computer_boats}                  {player_boats}\n  ")
     print("----------------------------")
     time.sleep(4)
     print("\n   +++++++++++++++++++")

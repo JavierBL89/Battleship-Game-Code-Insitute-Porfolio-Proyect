@@ -2,10 +2,10 @@ import random
 import time
 import random
 import sys
-from intro import intro_game
+from modules.intro import intro_game
 player_name = ""
-player_boats = 3
-compu_boats = 3
+player_boats = 0
+computer_boats = 0
 
 
 class Board:
@@ -25,14 +25,20 @@ class Board:
     def random_ship(self, size, name):
         """
         Create 5 random ships for each player
+        As duplicate boats, make a set of the lists 
+        to get actual length of boats and keep track of them
         """
+        global player_boats
+        global computer_boats
         total_ships = 1
         while total_ships <= 10:
             x, y = random.randint(1, size), random.randint(1, size)
             if name == "computer":
                 self.computer_ships.append((x, y))
+                computer_boats = len(set(self.computer_ships))
             if name == "player":
                 self.player_ships.append((x, y))
+                player_boats = len(set(self.player_ships))
             total_ships += 1
 
     def player_guess(self):
@@ -106,6 +112,7 @@ class Board:
         """
         Populates neatly the battleship passed in
         """
+        global player_boats
         row_number = 0
         if player == "player":
             for boat in self.player_ships:
@@ -135,10 +142,10 @@ class Board:
         Response accordigly to the user
         """
         global player_boats
-        global compu_boats
+        global computer_boats
         if shooter == "player" and shot in self.computer_ships:
-            compu_boats -= 1
-            if compu_boats == 0:
+            computer_boats -= 1
+            if computer_boats == 0:
                 time.sleep(2)
                 print("""\nWell well well little bitch!!\n
 You win this time round...
@@ -166,7 +173,7 @@ You win this time round...
                         restart.lower()
             else:
                 print("\nYou shunk my boat motherfucker!")
-            return compu_boats
+            return computer_boats
         elif shooter == "player" and shot not in self.computer_ships:
             print("\nYou missed!")
         elif shooter == "computer" and shot in self.player_ships:
@@ -230,8 +237,9 @@ def play_game(computer, player, player_game, size):
     """
     Start up game and run till the end of it
     """
-    computer.random_ship(size, "computer")
-    player.random_ship(size, "player")
+    global player_boats
+    global computer_boats
+
     game = True
     while game:
         player_shot = player.player_guess()
@@ -256,6 +264,7 @@ def play_game(computer, player, player_game, size):
         print("...........")
         print("  1 2 3 4 5")
         player.populate_board("player", computer_shot)
+        print(f"\nBoats left: {player_boats}")
         player_boats = Board.game_over(computer_wins)
         if player_boats is False:
             break
@@ -266,20 +275,20 @@ def play_game(computer, player, player_game, size):
         print("...........")
         print("  1 2 3 4 5")
         computer.populate_board("computer", player_shot)
-
+        print(f"\nBoats left: {computer_boats}")
 
 def main():
     global player_name
     global player_boats
-    global compu_boats
-    player_boats = 3
-    compu_boats = 3
+    global computer_boats
     size = 5
 
     computer = Board(size, "computer")
     player = Board(size, player_name)
+    computer.random_ship(size, "computer")
+    player.random_ship(size, "player")
     if not player_name:
-        player_name = intro_game(size, computer)
+        player_name = intro_game(size, computer, player_boats, computer_boats)
     else:
         pass
     play_game(computer, player, player_name, size)
