@@ -252,7 +252,7 @@ def play_game(computer, player, player_game):
         computer_wins = player.validate_shot(computer_shot, "computer")
         time.sleep(1)
         player.check_computer_guess(computer_shot)
-        print(f"{player_name}")
+        print(f" {player_name}")
         print("...........")
         print("  1 2 3 4 5")
         player.populate_board("player", computer_shot)

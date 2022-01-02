@@ -23,7 +23,7 @@ The game is only run into the terminal and utilises the Code Institue template w
  - **X** stands for missed shot
 
 
-* Go to live vesion [Battleship](<https://battleship-py-cod-ins-prj-3.herokuapp.com/>)
+Go to live vesion [Battleship](<https://battleship-py-cod-ins-prj-3.herokuapp.com/>)
 
 # Table Contents
 

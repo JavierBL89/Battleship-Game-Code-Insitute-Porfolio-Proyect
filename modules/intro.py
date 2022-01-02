@@ -20,8 +20,6 @@ def intro_game(size, computer, player_boats, computer_boats):
         else:
             break
     time.sleep(1)
-    print("\nahgg!! Really ugly")
-    time.sleep(1)
     food = input("\n...and what did you last have for food?\n")
     while True:
         if food.isdigit():
