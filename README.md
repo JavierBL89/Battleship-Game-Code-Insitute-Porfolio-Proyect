@@ -2,7 +2,7 @@
 ![View the live website on Heroku](https://battleship-py-cod-ins-prj-3.herokuapp.com/)
 # Overview
 
-This is a very simple computized version of the very popular Battleship game board launched in 1931, see ![Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)).
+This is a very simple computized version of the very popular Battleship game board launched in 1931, in wich one player needs to find and shink the opponent's boats to win the game. See ![Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)).
 
 The game is only run into the terminal and utilises the Code Institue template which makes possible to run the game in the browser.
 
@@ -21,7 +21,7 @@ The game is only run into the terminal and utilises the Code Institue template w
 **X** stands for missed shot
 
 
-* Play game ![Battleship](https://battleship-py-cod-ins-prj-3.herokuapp.com/)
+* Go to live vesion ![Battleship](https://battleship-py-cod-ins-prj-3.herokuapp.com/)
 
 # Table Contents
 
@@ -33,9 +33,12 @@ The game is only run into the terminal and utilises the Code Institue template w
 
 ### [Features](#features)
 
+- Player's name
+- Narrative
 - Board size
 - Ships
 - Shots
+- Validation
 
 ### [Future features](#future-features)
 
@@ -89,23 +92,54 @@ I used free app ![draw.io](https://app.diagrams.net/)
 
 At this point the game is limited in features due to its simplicity. 
 
+- Player's name:
+
+ The user must enter a player name which will be use later in the narrative and shown to indicate their game board.
+![](assets/images/Captura de pantalla (141).png)
+
+ - Narrative:
+
+ To improve the UX and inmerse the user into the game, a fun and a short narrative will be introduced from the very start all along till the very end of the game.
+![](assets/images/Captura de pantalla (143).png)
+
  - Size: 
 
-The game board size is set to 8x8, with no chance for the user to pick at their choice.
+The game board size is set to 5x5, with no chance for the user to pick at their choice.
+![](assets\images\Captura de pantalla (144).png)
 
  - Ships:
 
- At this point the number of ships for every player is also set to 5, being these of a single cell length.
+ At this point the number of ships for both players must vary due to code issues, one player may find more ships thant the other, which makes it a bit more interserting, these ships are of a single cell length.
+![](
 
+)
  - Shots:
 
  The user is allow to take their guess manually.
+![](
+
+)
+ - Validation:
+
+* Player's name.
+
+  1. Firts input asked will have a minimun of 3 characters, and a maximun of 6.
+  2. Second input asked will have a minimun of 4 characters, and a
+
+* Player's guess.
+
+ Player is only allowed to enter and integer name from 1 to 5 to make their guess
+
+ * Restart game.
+
+ Once the game is finished, the player is able to restart the game without facing the intro game again, adn for that must enter "y/n", only one of these characters are possible.
 
  ## Future features
 
  Many features could added to improve the user's experience:
 
  * Let user pick board size
+ * Set the same number of ships for both players
  * Let the user position boats on their board
  * Let user pick game difficulty by reducing the number of boats or/and implementing a limited number of shots available, also by limitating the time avaiblable to finish the game.
  * Add visual experience with a nice interface
@@ -115,16 +149,96 @@ The game board size is set to 8x8, with no chance for the user to pick at their 
 
  - Manual testing
 
- When developing i used manual testing by printing out the code so very often to check whether if it was working as wanted. 
+ When developing i used manual testing by printing out the code so very often to check whether if the code it was working as wanted. 
+
+- Validation
+
+Any input entered by the user is validated against certain pass criteria. I have checked its functionallity by entering many diferent inputs many times trying to break the code, i found a leak when entering user's guess and fixed.(see on bugs fixed section bellow)
+
+The loop kept runnig till the input was valid but afetr a few attempts it would crashed and throw all the errors stored. The variable's value input kept storing the data over and over while loop run, which made crash. I fixed by giving the variable a empty string at the top of the loop
 
  - VS Debugger
 
- I used a extension of Visual Studio named Jupiter, which i still don't know how to use it...
+ I used a extension of Visual Studio named Jupiter, which i still don't know how to fully use it...
  The debugger tool tells you all the error while coding like extra whitespaces, code lines way to long.
  It also allows you to debugg using breakpoints, which i still don't understand, sometimes it shows an error but the terminal runs perfectly...
 
  - Validators
 
-  - HTML
+  - HTML ![W3C](https://validator.w3.org/)
+
+  * It shows errors and warnings on the index.html file provided by Code Institute Template.
+
+  ![](assets/images/index_validator.png)
+
+  - Python ![PEP8](http://pep8online.com/)
+
+  * All py files showed no errors or warnings
+
+
+  ## Technology Used
+
+  - Languajes
+   
+   - HTML
+   - JavaScript
+   - Python
+
+  - Libraries
+
+   - No libraries were used on this project
+
+## Bugs
+
+On this project i faced problems and challenges on every single method as new to Python and classes which i still need to work on to understand them. 
+
+I tried to write down all the problems i faced while developing, and takin images of them. so i could explain them on this section.
+
+Now i go through all of them on my notebook and they don't make any sense...i don't even remember them... so here only the ones that make sense :)
+
+ - **Fixed bugs**
+
+ * **Bug**. Whe creating a board i wanted to show numbers on every row as landmarks for the user. The aproched i took was **1st image**, but when printing the board with ships or shots nor these or the row numbers were shown.
+    
+    **Fix**. From one of the resourses metioned bellow(see Code Credits) i took the next approach. Initialize a count outside the if statement, and increases along depending of the numbers of rows in th board **see commented code on the 2nd image** 
+
+![](assets/images/1st_approach.png)
+
+![](assets/images/2nd_approach.png)
+
+* **Bug**. When printing out the radar, i tried to print it after updating the board with the user's shots but i kept getting the initial empty board.
+  
+  **Fix**. It took me a while to figure out 
+
+* **Bug**. In order to finish the game i kwnew that a while loop was need and somehow break it with a False boolean.
+
+  **Fix**. I didn't know how to approach this and after hours of trial and error, i looked this guy's code **see 1st image** and learnt his approach by usuing the if statement in the while loop to cheack whether a condition is true or false.
+  Then i created a count to keep track of the remainding boats and a game over function **see 2nd image** to return false if the condition is true.
+
+![](assets/images/code_resourse.png)
+
+![](assets\images\game_over.png)
+
+* **Bug**. The biggest problem i faced was populating the player's board updated whit hit boats using "$" symbol. I spent over 12 hours there...
+
+  **Fix**. In this case the method i called by the player instance and passes in the player's name as string and the last shot of the other's player. 
+    **see image code block 124/127**.
+   1. I loop through the boats in the player's ships list, get the coordenates of each one and place an "S" symbol on the player's board.
+   ![](assets\images\Captura de pantalla (133).png)
+
+   2. Only after that i could update the boats status, and for that i take the opponent's last shot and check it against player's ships array, get the shot cordenates and update the player's board with "$" symbol
+   ![](assets/images/Captura de pantalla (135).png)
+
+   3. Print board neatly and updated.
+   ![](assets/images/Captura de pantalla (137).png)
+
+
+
+
+
+
+
+
+
 
  

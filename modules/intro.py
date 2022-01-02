@@ -11,7 +11,7 @@ def intro_game(size, computer, player_boats, computer_boats):
         if shirt.isdigit():
             print(f"\nI don`t think '{shirt}' reffers to any color boy!")
             shirt = input("\nWhat color is your shirt?\n")
-        elif len(shirt) < 4:
+        elif len(shirt) < 3:
             print("\nThat is way to short...try again")
             shirt = input("\nWhat color is your shirt?\n")
         elif len(shirt) > 6:

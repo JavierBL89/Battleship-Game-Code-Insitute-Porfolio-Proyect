@@ -5,7 +5,7 @@ import sys
 from modules.intro import intro_game
 player_name = ""
 player_boats = 0
-computer_boats = 0
+computer_boats = 1
 
 
 class Board:
@@ -25,7 +25,7 @@ class Board:
     def random_ship(self, size, name):
         """
         Create 5 random ships for each player
-        As duplicate boats, make a set of the lists 
+        As duplicate boats, make a set of the lists
         to get actual length of boats and keep track of them
         """
         global player_boats
@@ -235,7 +235,7 @@ def play_game(computer, player, player_game, size):
     """
     global player_boats
     global computer_boats
-
+    print(computer_boats)
     game = True
     while game:
         player_shot = player.player_guess()
@@ -247,7 +247,7 @@ def play_game(computer, player, player_game, size):
         if computer_count is False:
             break
         else:
-            compu_boats = True
+            computer_boats = True
         time.sleep(2)
         print(f"\nMy shot is... {computer_shot}")
         time.sleep(2)
@@ -282,10 +282,10 @@ def main():
     player = Board(size, player_name)
     computer.random_ship(size, "computer")
     player.random_ship(size, "player")
-    if not player_name:
-        player_name = intro_game(size, computer, player_boats, computer_boats)
-    else:
-        pass
+    # if not player_name:
+    #     player_name = intro_game(size, computer, player_boats, computer_boats)
+    # else:
+    #     pass
     play_game(computer, player, player_name, size)
 
 
