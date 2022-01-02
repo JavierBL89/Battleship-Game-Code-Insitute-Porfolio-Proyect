@@ -5,7 +5,7 @@ import sys
 from modules.intro import intro_game
 player_name = ""
 player_boats = 0
-computer_boats = 1
+computer_boats = 0
 
 
 class Board:
@@ -50,21 +50,21 @@ class Board:
         guess_row = ""
         try:
             print("\nYou shot!")
-            guess_row = int(input("\nRow: "))
-            while guess_row not in [1, 2, 3, 4, 5]:
+            guess_row = input("\nRow: ")
+            while guess_row not in ["1", "2", "3", "4", "5"]:
                 print("Please enter  valid data, "
                       "only whole numbers from 1 to 8 are valid!\n")
-                guess_row = int(input("Row: "))
+                guess_row = input("Row: ")
 
-            guess_column = int(input("Column: "))
-            while guess_column not in [1, 2, 3, 4, 5]:
+            guess_column = input("Column: ")
+            while guess_column not in ["1", "2", "3", "4", "5"]:
                 print("Please enter  valid data, "
                       "only whole numbers from 1 to 8 are valid!\n")
-                guess_column = int(input("Column: "))
+                guess_column = input("Column: ")
         except ValueError:
             print("No a valid input")
             self.player_guess()
-        return guess_row, guess_column
+        return int(guess_row), int(guess_column)
 
     def computer_guess(self):
         """
@@ -79,7 +79,7 @@ class Board:
                 self.computer_guess()
         return compu_guess
 
-    def check_guess(self, player_shot):
+    def check_player_guess(self, player_shot):
         """
         Check user's shot against computer battleship
         Updates computer's battleship accordingly
@@ -93,13 +93,13 @@ class Board:
             elif player_shot in self.computer_ships:
                 self.board[self.row][self.column] = "$"
             return self.board
-        elif player_shot in self.player_shots:
+        while player_shot in self.player_shots:
             row, col = player_shot
             print(f"\nCoordenates {row, col} already been used")
             print("Shot again!")
             self.player_guess()
 
-    def check_guess_2(self, computer_shot):
+    def check_computer_guess(self, computer_shot):
         self.row = computer_shot[0] - 1
         self.column = computer_shot[1] - 1
         if computer_shot not in self.player_ships:
@@ -110,7 +110,6 @@ class Board:
         """
         Populates neatly the battleship passed in
         """
-        global player_boats
         row_number = 0
         if player == "player":
             for boat in self.player_ships:
@@ -229,31 +228,30 @@ def restart_game():
     main()
 
 
-def play_game(computer, player, player_game, size):
+def play_game(computer, player, player_game):
     """
     Start up game and run till the end of it
     """
     global player_boats
     global computer_boats
-    print(computer_boats)
     game = True
     while game:
         player_shot = player.player_guess()
         computer_shot = computer.computer_guess()
         time.sleep(1)
-        computer.check_guess(player_shot)
+        computer.check_player_guess(player_shot)
         player_win = computer.validate_shot(player_shot, "player")
         computer_count = Board.game_over(player_win)
         if computer_count is False:
             break
         else:
-            computer_boats = True
+            computer_count = True
         time.sleep(2)
         print(f"\nMy shot is... {computer_shot}")
         time.sleep(2)
         computer_wins = player.validate_shot(computer_shot, "computer")
         time.sleep(1)
-        player.check_guess_2(computer_shot)
+        player.check_computer_guess(computer_shot)
         print(f"{player_name}")
         print("...........")
         print("  1 2 3 4 5")
@@ -286,7 +284,7 @@ def main():
     #     player_name = intro_game(size, computer, player_boats, computer_boats)
     # else:
     #     pass
-    play_game(computer, player, player_name, size)
+    play_game(computer, player, player_name)
 
 
 main()
