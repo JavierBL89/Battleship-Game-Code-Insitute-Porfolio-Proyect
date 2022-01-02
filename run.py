@@ -243,9 +243,8 @@ def play_game(computer, player, player_game, size):
         time.sleep(1)
         computer.check_guess(player_shot)
         player_win = computer.validate_shot(player_shot, "player")
-        print(player_win)
-        compu_boats = Board.game_over(player_win)
-        if compu_boats is False:
+        computer_count = Board.game_over(player_win)
+        if computer_count is False:
             break
         else:
             compu_boats = True
@@ -253,7 +252,6 @@ def play_game(computer, player, player_game, size):
         print(f"\nMy shot is... {computer_shot}")
         time.sleep(2)
         computer_wins = player.validate_shot(computer_shot, "computer")
-        print(computer_wins)
         time.sleep(1)
         player.check_guess_2(computer_shot)
         print(f"{player_name}")
@@ -261,11 +259,11 @@ def play_game(computer, player, player_game, size):
         print("  1 2 3 4 5")
         player.populate_board("player", computer_shot)
         print(f"\nBoats left: {player_boats}")
-        player_boats = Board.game_over(computer_wins)
-        if player_boats is False:
+        player_count = Board.game_over(computer_wins)
+        if player_count is False:
             break
         else:
-            player_boats = True
+            player_count = True
         time.sleep(1)
         print("\n   Radar   ")
         print("...........")
