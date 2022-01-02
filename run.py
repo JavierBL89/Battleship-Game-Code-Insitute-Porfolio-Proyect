@@ -190,7 +190,7 @@ You win this time round...
                     if restart == "y":
                         restart_game()
                     elif restart == "n":
-                        print("I guess you must need a break..")
+                        print("I guess you must need a break...")
                         print("See ya soon boy!")
                         sys.exit()
                     elif restart != "y" or restart != "n":
