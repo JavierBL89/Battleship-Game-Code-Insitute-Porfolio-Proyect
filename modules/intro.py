@@ -2,6 +2,7 @@ import time
 
 
 def intro_game(size, computer, player_boats, computer_boats):
+    time.sleep(2)
     print("\nOhh! Long time waiting for this!")
     time.sleep(1)
     print("\nBefore get started, let me ask you...\n")
