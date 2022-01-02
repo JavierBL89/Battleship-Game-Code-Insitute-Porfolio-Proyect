@@ -224,13 +224,24 @@ Now i go through all of them on my notebook and they don't make any sense...i do
   **Fix**. In this case the method i called by the player instance and passes in the player's name as string and the last shot of the other's player. 
     **see image code block 124/127**.
    1. I loop through the boats in the player's ships list, get the coordenates of each one and place an "S" symbol on the player's board.
-   ![](assets\images\Captura de pantalla (133).png)
+   ![](assets\images\Captura-de-pantalla(133).png)
 
    2. Only after that i could update the boats status, and for that i take the opponent's last shot and check it against player's ships array, get the shot cordenates and update the player's board with "$" symbol
-   ![](assets/images/Captura de pantalla (135).png)
+   ![](assets/images/Captura-de-pantalla(135).png)
 
    3. Print board neatly and updated.
-   ![](assets/images/Captura de pantalla (137).png)
+   ![](assets/images/Captura-de-pantalla(137).png)
+
+ - **Unfixed bugs**
+
+ * Boats duplicated. The user may find different number of boats for each player down to a replication of boats.
+
+ After having my last facetime session with my mentor, i realized that my random ships method also creates duplicates boats... so could not go through it with him, and that was only 2 days before the submit project deathline. 
+ I tried hard to fix it but i was burning off time and had to keep going, from this attempt of fixing it i found a way to keep track of the actual number of boats in every list.
+ I convert the list in sets, and gice the length of the set to a global variable.
+ ![](assets/images/Captura-de-pantalla(147).png)
+
+
 
 
 
