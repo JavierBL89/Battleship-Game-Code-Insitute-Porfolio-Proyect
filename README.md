@@ -1,8 +1,10 @@
-![img responsiveness](assets/images/Captura de pantalla(121).png)
-![View the live website on Heroku](https://battleship-py-cod-ins-prj-3.herokuapp.com/)
+![img responsiveness](assets/images/Captura-de-pantalla(121).png)
+[View the live website on Heroku](https://battleship-py-cod-ins-prj-3.herokuapp.com/)
+
 # Overview
 
-This is a very simple computized version of the very popular Battleship game board launched in 1931, in wich one player needs to find and shink the opponent's boats to win the game. See ![Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)).
+This is a very simple computized version of the very popular Battleship game board launched in 1931, in wich one player needs to find and shink the opponent's boats to win the game. 
+See ![Wikipedia](<https://en.wikipedia.org/wiki/Battleship_(game)>).
 
 The game is only run into the terminal and utilises the Code Institue template which makes possible to run the game in the browser.
 
@@ -21,7 +23,7 @@ The game is only run into the terminal and utilises the Code Institue template w
  - **X** stands for missed shot
 
 
-* Go to live vesion ![Battleship](<https://battleship-py-cod-ins-prj-3.herokuapp.com/>)
+* Go to live vesion [Battleship](<https://battleship-py-cod-ins-prj-3.herokuapp.com/>)
 
 # Table Contents
 
@@ -84,7 +86,7 @@ The game is only run into the terminal and utilises the Code Institue template w
 
 This is a simple flow chart of the game flow to scheme the steps needed to develop it
 
-I used free app ![draw.io](<https://app.diagrams.net/>)
+I used free app [draw.io](<https://app.diagrams.net/>)
 
 
 ![](assets/images/flow-chart.jpg)
@@ -127,9 +129,9 @@ The game board size is set to 5x5, with no chance for the user to pick at their 
 
    * Player's name.
 
-    1. Firts input asked will have a minimun of 3 characters, and a maximun of 6.
+    1- Firts input will have a minimun of 3 characters, and a maximun of 6.
 
-    2. Second input asked will have a minimun of 4 characters, and a
+    2- Second input will have a minimun of 4 characters, and a
 
     * Player's guess.
 
@@ -168,13 +170,13 @@ Any input entered by the user is validated against certain pass criteria. I have
 
  - Validators
 
-  - HTML ![W3C](<https://validator.w3.org/>)
+   - HTML [W3C](<https://validator.w3.org/>)
 
     It shows errors and warnings on the index.html file provided by Code Institute Template.
 
   ![](assets/images/index_validator.png)
 
-  - Python ![PEP8](>http://pep8online.com/>)
+   - Python [PEP8](>http://pep8online.com/>)
 
     All py files showed no errors or warnings
 
@@ -183,9 +185,9 @@ Any input entered by the user is validated against certain pass criteria. I have
 
   - Languajes
    
-   - HTML
-   - JavaScript
-   - Python
+    - HTML
+    - JavaScript
+    - Python
 
   - Libraries
 
@@ -202,9 +204,11 @@ Now i go through all of them on my notebook and they don't make any sense...i do
  **Fixed bugs**
 
  * **Bug**
+
     When creating a board i wanted to show numbers on every row as landmarks for the user. The approched i took was **see 1st image**, but when printing the board with ships or shots nor these or the row numbers were shown.
     
     **Fix**
+
     From one of the resourses metioned bellow(see Code Credits) i took the next approach. Initialize a count outside the if statement, and increases along depending of the numbers of rows in th board **see commented code on the 2nd image** 
 
 ![](assets/images/1st_approach.png)
@@ -212,15 +216,18 @@ Now i go through all of them on my notebook and they don't make any sense...i do
 ![](assets/images/2nd_approach.png)
 
 * **Bug**
+
     When printing out the radar, i tried to print it after updating the board with the user's shots but i kept getting the initial empty board.
   
   **Fix**
     It took me a while to figure out 
 
-* **Bug**. 
+* **Bug**
+
     In order to finish the game i kwnew that a while loop was need and somehow break it with a False boolean.
 
-  **Fix**. 
+  **Fix**
+
     I didn't know how to approach this and after hours of trial and error, i looked this guy's code **see 1st image** and learnt his approach by usuing the if statement in the while loop to cheack whether a condition is true or false.
     Then i created a count to keep track of the remainding boats and a game over function **see 2nd image** to return false if the condition is true.
 
@@ -228,10 +235,12 @@ Now i go through all of them on my notebook and they don't make any sense...i do
 
 ![](assets\images\game_over.png)
 
-* **Bug**.
+* **Bug**
+
     The biggest problem i faced was populating the player's board updated whit hit boats using "$" symbol. I spent over 12 hours there...
 
-  **Fix**. 
+  **Fix**
+
     In this case the method i called by the player instance and passes in the player's name as string and the last shot of the other's player. 
     **(see image code block 124/127)**.
 
@@ -247,21 +256,24 @@ Now i go through all of them on my notebook and they don't make any sense...i do
 
    ![](assets/images/Captura-de-pantalla(137).png)
 
-* **Bug**. 
+* **Bug**
+
     The user's guess input validation would throw all the errors stored after few a failure attemps and the code woul break.
 
-  **Fix**. 
+  **Fix**
 
     The loop kept runnig till the input was valid but afetr a few attempts it would crashed and throw all the errors stored. The variable's value input kept storing the data over and over while loop run, which made crash. I fixed by giving the variable a empty string at the top of the loop.
 
  **Unfixed bugs**
 
-   * Boats duplicated. Players might have different number of boats for each player down to a replication of boats.
+   * Boats duplicated.
+
+   Players might have different number of boats for each player down to a replication of boats.
 
    After having my last facetime session with my mentor, i realized that my random ships method also creates duplicates boats... so could not go through it with him, and that was only 2 days before the submit project deathline. 
    I tried hard to fix it but i was burning off time and had to keep going, from this attempt of fixing it i found a way to keep track of the actual number of boats in every list.
    I convert the list in sets, and gice the length of the set to a global variable.
-   
+
  ![](assets/images/Captura-de-pantalla(147).png)
 
 ## Credits
@@ -275,13 +287,13 @@ Also i wathed some tutorials that helped me how to create a matrix(which is also
 
 * Object Oriented Battleship game
 
- - Part 1 (<https://youtu.be/xz9GrOwQ_5E>)
- - Part 2 (<https://youtu.be/CIv7lPZy9nQ>)
- - Part 3 (<https://youtu.be/jshgccgBs2U>)
+  - Part 1 (<https://youtu.be/xz9GrOwQ_5E>)
+  - Part 2 (<https://youtu.be/CIv7lPZy9nQ>)
+  - Part 3 (<https://youtu.be/jshgccgBs2U>)
 
 * Functional Battleship game
 
- - (<https://youtu.be/7Ki_2gr0rsE>)
+  - (<https://youtu.be/7Ki_2gr0rsE>)
 
  ## Acknowledge
 
