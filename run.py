@@ -277,6 +277,7 @@ def play_game(computer, player, player_game, size):
         computer.populate_board("computer", player_shot)
         print(f"\nBoats left: {computer_boats}")
 
+
 def main():
     global player_name
     global player_boats
